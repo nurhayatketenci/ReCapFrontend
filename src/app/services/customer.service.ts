@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CustomeResponseModel } from '../models/customerResponseModel';
+import { Customer } from '../models/customer';
+import { ListResponseModel } from '../models/listResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { CustomeResponseModel } from '../models/customerResponseModel';
 export class CustomerService {
   apiUrl="https://localhost:44339/api/customers/getall"
   constructor(private httpClient:HttpClient) { }
-  getCustomer():Observable<CustomeResponseModel>{
-   return this.httpClient.get<CustomeResponseModel>(this.apiUrl);
+  getCustomer():Observable<ListResponseModel<Customer>>{
+   return this.httpClient.get<ListResponseModel<Customer>>(this.apiUrl);
    }
 }

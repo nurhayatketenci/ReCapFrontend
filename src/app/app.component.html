@@ -1,30 +1,18 @@
-<!-- <ul>
-  <li *ngFor="let product of products">{{product.productName}}</li>
-</ul> -->
 <div class="container">
-  <app-navi></app-navi>
-  <div class="row">
-    <div class="col-md-9">
-      <app-car></app-car>
-    </div>
-    <div class="col-md-3">
-      <app-brand></app-brand>
-    </div>
-   
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <app-color></app-color>
-        </div>
-        <div class="col-md-6">
-          <app-customer></app-customer>
-        </div>
+    <app-navi></app-navi>
+    <div class="row">
+      <div class="col-md-3">
+        <app-brand></app-brand>
       </div>
-     
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-    <div class="container">
-      <app-rental></app-rental>
-    </div>
-    <router-outlet></router-outlet>
-</div>
+    <div class="row">
+      <div class="col-md-3">
+        <app-color></app-color>
+      </div>
+   </div>
+  </div>
+  <div>
+  </div>
