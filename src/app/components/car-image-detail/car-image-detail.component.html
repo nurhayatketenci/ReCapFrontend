@@ -12,7 +12,7 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div *ngFor="let carImage of carImages" >
-          <img src="{{apiUrl}}/{{carImage.imagePath}}" class="d-block w-100" alt="...">
+          <img style="font-weight: 50px;" src="{{apiUrl}}/{{carImage.imagePath}}" class="d-block w-100" alt="...">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
@@ -42,7 +42,10 @@
             <td>{{car.modelYear}}</td>
             <td>{{car.dailyPrice}}</td>
             <td>{{car.description}}</td>
+            <td><button routerLink="rent/car/{{car.carId}}">Kirala</button></td>
         </tr>
+        
     </table>
   </div>
+  
 

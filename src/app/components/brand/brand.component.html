@@ -1,3 +1,13 @@
+<div class="mb-3">
+  <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" for="exampleFormControlInput1" class="form-label">Marka Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+</div>
+<div>
+  <div *ngIf="filterText.length>2" class="alert alert-primary">
+    {{filterText}} aradınız.
+ </div>
+
+</div>
 <ul *ngIf="dataLoaded==false"  class="list-group">
   <li  class="list-group-item active" aria-current="true">Markalar</li>
   <div class="d-flex justify-content-center">
@@ -8,12 +18,12 @@
 </ul>
 <ul *ngIf="dataLoaded==true" class="list-group">
   <li routerLink="/cars"
-  class="list-group-item">Tüm Markalar</li><br>
+  class="list-group-item">Tüm Arabalar</li><br>
   
   <li class="list-group-item active" aria-current="true">Markalar</li>
 
   <li (click)="setCurrentBrand(brand)"
     routerLink="/cars/brand/{{brand.brandId}}"
-    *ngFor="let brand of brands" 
+    *ngFor="let brand of brands | filterPipe:filterText" 
     [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>  
 </ul>

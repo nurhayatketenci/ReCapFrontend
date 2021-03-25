@@ -4,22 +4,39 @@
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
+ <!-- <div class="mb-3">
+    <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" for="exampleFormControlInput1" class="form-label">Araba Ara</label>
+    <input type="text" [(ngModel)]="filterCar" class="form-control" id="filterCar" placeholder="arama ifadesi giriniz">
+  </div>
+  <div>
+    <div *ngIf="filterCar.length>2" class="alert alert-primary">
+      {{filterCar}} aradınız.
+   </div> -->
+  
+   <app-filter></app-filter>
+   
 <table *ngIf="dataLoaded==true" class="table table-success table-striped">
     <thead>
         <tr>
-            <td>id</td>
+            
             <th>Marka</th>
             <th>Renk</th>
             <th>Model</th>
             <th>resim</th>
            </tr>
     </thead>
-    <tr *ngFor="let car of cars">
-       <td>{{car.carId}}</td>
-       <td>{{car.brandName}}</td>
+    <td><button routerLink="rent/car/{{car.carId}}">Detaya git</button></td>
+   <tr *ngFor="let car of cars filtercarpipe:filterCar">
+
+      
+       <td>{{car.brandName |uppercase}}</td>
         <td>{{car.colorName}}</td>
         <td>{{car.modelYear}}</td>
         <td><button routerLink="/cars/image/{{car.carId}}">Detaya git</button></td>
+       
     </tr>
 </table>
+
+
+
 

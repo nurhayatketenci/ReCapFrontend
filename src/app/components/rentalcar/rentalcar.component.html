@@ -1,0 +1,84 @@
+<div class="content">
+    <div class="row" *ngIf="!payVisible">
+      <h5>{{ car.brandName }} {{ car.carName }}</h5>
+      <form >
+        <div class="form-group mb-3">
+          <div
+            style="
+              border: 1px solid rgb(182, 205, 241);
+              border-radius: 5px;
+              padding: 5px 0 0 25px;
+            "
+          >
+            <div class="row mb-2">
+              <div class="col-6">
+                <div class="row input-group flex-nowrap">
+                  <span class="input-group-text col-3" id="returnDate"
+                    >Musteri</span
+                  >
+                  <select
+                    class="form-group form-select col-9"
+                    formControlName="cUsersId"
+                    type="number"
+                    id="cUsersId"
+                    placeholder="Musteriler"
+                  >
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row input-group flex-nowrap">
+                  <span class="input-group-text col-3" id="rentDate"
+                    >Baslangic</span
+                  >
+                  <input
+                    id="rentDate"
+                    class="form-control col-9"
+                    type="date"
+                    formControlName="rentDate"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <div class="row input-group flex-nowrap">
+                  <span class="input-group-text col-3" id="carId">Arac</span>
+                  <input
+                    id="carId"
+                    class="form-control disabled"
+                    type="number"
+                    formControlName="carId"
+                    placeholder="{{ car?.brandName }} {{ car?.carName }}"
+                  />
+                  </div>
+              </div>
+              <div class="col-6">
+                <div class="row input-group flex-nowrap">
+                  <span class="input-group-text col-3" id="returnDate"
+                    >Bitiş</span
+                  >
+                  <input
+                    id="returnDate"
+                    class="form-control col-9"
+                    type="date"
+                    formControlName="returnDate"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer" style="text-align: right">
+            <button class="btn btn-fill btn-primary" (click)="rent()">
+              <b> ODEME </b>
+            </button>
+            <button type="button" class="btn btn-danger">
+              <b> IPTAL </b>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  
+    
+  </div>

@@ -10,6 +10,13 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CarComponent } from './components/car/car.component';
 import { RentalComponent } from './components/rental/rental.component';
 import {CarImageDetailComponent} from './components/car-image-detail/car-image-detail.component';
+import { VatAddedPipe } from './pipes/vat-added.pipe';
+import {FormsModule} from '@angular/forms';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { FilterColorPipePipe } from './pipes/filter-color-pipe.pipe';
+import { FiltercarpipePipe } from './pipes/filtercarpipe.pipe';
+import { FilterComponent } from './components/filter/filter.component';
+import { RentalcarComponent } from './components/rentalcar/rentalcar.component';
 
 
 
@@ -24,7 +31,15 @@ import {CarImageDetailComponent} from './components/car-image-detail/car-image-d
     NaviComponent,
     CarComponent,
     RentalComponent,
-    CarImageDetailComponent
+    CarImageDetailComponent,
+    VatAddedPipe,
+    FilterPipePipe,
+    FilterColorPipePipe,
+    FiltercarpipePipe,
+    FilterComponent,
+    RentalcarComponent,
+    
+    
  
 
 
@@ -32,7 +47,8 @@ import {CarImageDetailComponent} from './components/car-image-detail/car-image-d
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

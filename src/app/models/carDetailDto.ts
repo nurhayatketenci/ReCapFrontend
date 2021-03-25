@@ -7,4 +7,5 @@ export interface CarDetailDto{
     description:string
     brandId:number
     colorId:number
+    carName:string
 }
