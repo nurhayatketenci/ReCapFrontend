@@ -25,14 +25,12 @@
             <th>resim</th>
            </tr>
     </thead>
-    <td><button routerLink="rent/car/{{car.carId}}">Detaya git</button></td>
-   <tr *ngFor="let car of cars filtercarpipe:filterCar">
-
-      
-       <td>{{car.brandName |uppercase}}</td>
+   <tr *ngFor="let car of cars ">
+        <td>{{car.brandName |uppercase}}</td>
         <td>{{car.colorName}}</td>
         <td>{{car.modelYear}}</td>
         <td><button routerLink="/cars/image/{{car.carId}}">Detaya git</button></td>
+        <td><button routerLink="/rent/car/{{car.carId}}">Kirala</button></td>
        
     </tr>
 </table>

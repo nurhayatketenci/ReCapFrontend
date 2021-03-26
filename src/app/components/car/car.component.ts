@@ -26,7 +26,6 @@ colorFilter: number = 0;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
-      console.log(params["brandId"])
       if(params["brandId"]){
         this.getCarsByBrand(params["brandId"])
       } else if(params["colorId"]){

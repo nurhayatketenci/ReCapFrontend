@@ -14,64 +14,84 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./rentalcar.component.css']
 })
 export class RentalcarComponent implements OnInit {
-  car: CarDetailDto;
-  cars: CarDetailDto[];
-  rental: Rental;
-  customers: Customer[] = [];
+  
+  rentalAddForm: FormGroup;
+  customers: Customer[] = []; // CustomerDetailDto listesi
+  currentCar: CarDetailDto;
   rentDate: Date;
   returnDate: Date;
-  rentForm: FormGroup;
-  payVisible = false;
+  totalPrice:number = 0;
+  dataLoaded = false;
   constructor(
     private activedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
     private carService: CarService,
     private customerService: CustomerService,
-    private rentalService: RentalService
+    private rentalService: RentalService,
+ 
   ) { }
 
   ngOnInit(): void {
-    this.activedRoute.params.subscribe((params) => {
-      this.getCarDetail(params['carId']);
-      this.getCustomers(), this.createRentForm();
+    this.rentDate = new Date();
+    this.returnDate = new Date();
+
+    this.getCustomerDetails();
+    this.createRentalAddForm();
+
+    this.activedRoute.queryParams.subscribe((params) => {
+      if (params.carId) {
+        this.getCarDetail(params.carId);
+      }
     });
   }
   
   getCarDetail(carId: number) {
     this.carService.getCarById(carId).subscribe((response) => {
-      this.cars = response.data;
+      this.currentCar= response.data[0];
     });
   }
 
-  getCustomers() {
-    this.customerService.getCustomer().subscribe((c) => {
-      this.customers = c.data;
-    });
-  }
-
-  createRentForm() {
-    this.rentForm = this.formBuilder.group({
-      rentDate: ['', Validators.required],
-      returnDate: [''],
-      carId: [''],
+  createRentalAddForm() {
+    this.rentalAddForm = this.formBuilder.group({
       customerId: ['', Validators.required],
+      rentDate: ['', Validators.required],
+      carId: [''],
+      returnDate: [''],
     });
   }
 
-  rent() {
-    if (this.rentForm.valid) {
-      var data = Object.assign({}, this.rentForm.value);
-      data.carId = this.car.carId;
-      data.customerId = parseInt(data.customerId);
-      this.rental = data;
-      this.payVisible = true;
 
-      
-      this.router.navigate(['']);
+  addToCart() {
+    if (this.rentalAddForm.valid) {
+      let rentalModel = Object.assign({}, this.rentalAddForm.value);
+      rentalModel.carId = this.currentCar.carId;
+    
     } else {
-      console.log('Bilgilerin dogrulugundan emin olun.', 'HATA!');
+      console.log('Formunuz eksik', 'Hata');
     }
+  }
 
-}
+ 
+  getCustomerDetails() {
+    this.customerService.getCustomer().subscribe((response) => {
+      this.customers = response.data;
+      this.dataLoaded = true;
+    });
+  }
+  
+  calcTotalPrice() {
+    let startDate = new Date(this.rentalAddForm.value.rentDate);
+    let endDate = new Date(this.rentalAddForm.value.returnDate);
+    if( isNaN(startDate.getTime()) || isNaN(endDate.getTime())   ){
+      this.totalPrice = 0;
+    } else if ( startDate > endDate ) {
+      this.totalPrice = 0;    
+    } else {
+      let dateDiff = Math.floor((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60 / 24);
+      this.totalPrice = dateDiff * this.currentCar.dailyPrice;
+    }
+  }
+
+
 }

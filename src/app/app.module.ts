@@ -11,14 +11,12 @@ import { CarComponent } from './components/car/car.component';
 import { RentalComponent } from './components/rental/rental.component';
 import {CarImageDetailComponent} from './components/car-image-detail/car-image-detail.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { FilterColorPipePipe } from './pipes/filter-color-pipe.pipe';
 import { FiltercarpipePipe } from './pipes/filtercarpipe.pipe';
 import { FilterComponent } from './components/filter/filter.component';
 import { RentalcarComponent } from './components/rentalcar/rentalcar.component';
-
-
 
 
 
@@ -38,17 +36,15 @@ import { RentalcarComponent } from './components/rentalcar/rentalcar.component';
     FiltercarpipePipe,
     FilterComponent,
     RentalcarComponent,
+  
     
-    
- 
-
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
