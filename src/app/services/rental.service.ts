@@ -3,25 +3,42 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CarDetailDto } from '../models/carDetailDto';
 import { ListResponseModel } from '../models/listResponseModel';
+import { RentableCar } from '../models/rentablecar';
 import { Rental } from '../models/rental';
+import { ResponseModel } from '../models/responseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentalService {
   apiUrl="https://localhost:44339/api/"
+  rentingCar:RentableCar
+
   constructor(private httpClient:HttpClient) { }
   getRentals():Observable<ListResponseModel<Rental>>{
     let newPath=this.apiUrl+"rentals/RentalDetailDto"
    return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl);
    }
-  getRentalByCar(car: number): Observable<ListResponseModel<Rental>> {
-    let newPath = this.apiUrl + 'rentals/get' + car;
+  getRentalByCarId(carId: number): Observable<ListResponseModel<Rental>> {
+    let newPath = this.apiUrl + 'rentals/getrentalbycar?carId=' + carId;
     return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
-  add(rental:Rental):Observable<ListResponseModel<CarDetailDto>> {
+  add(rental:Rental):Observable<ResponseModel> {
     let newPath=this.apiUrl+"rentals/add";
-    return this.httpClient.post<ListResponseModel<CarDetailDto>>(newPath, rental);
+    return this.httpClient.post<ResponseModel>(newPath, rental);
   }
-
+  getRentalById(rentId:number):Observable<SingleResponseModel<Rental>>{
+    let newPath = this.apiUrl+"rentals/getbycarid?rentId="+rentId;
+    return this.httpClient.get<SingleResponseModel<Rental>>(newPath);
+  }
+  getRentingCar():RentableCar{
+  return this.rentingCar 
+  }
+  setRentingCar(rental:RentableCar){ 
+  this.rentingCar=rental
+  }
+  removeRentingCar(){
+    this.rentingCar=null
+  }
 }

@@ -1,0 +1,20 @@
+<table  class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Marka Id</th>
+            <th>Marka Adı</th>
+            <th></th>
+            <th></th>
+            </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let brand of brands "  style="color: black;">
+        <td> <b>{{brand.brandId}} </b> </td>
+        <td > <b> {{brand.brandName |uppercase}}</b> </td>
+        <td> <button type="button" class="btn btn-danger" routerLink="/brands/update/{{brand.brandId}}">Markayı Güncelle</button></td>
+        <td> <button type="button" class="btn btn-danger" routerLink="/brands/delete/{{brand.brandId}}">Markayı Sil</button></td>
+    </tr>
+   </tbody>
+  
+</table>
+<button type="button" class="btn btn-danger" routerLink="/brands/add">Marka Ekle</button>

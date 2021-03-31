@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { CarImage } from 'src/app/models/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
@@ -17,7 +18,8 @@ export class CarImageDetailComponent implements OnInit {
   apiUrl : string = "https://localhost:44339/Images/";
   constructor(private carService: CarService,
     private carImageService:CarImageService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -31,6 +33,8 @@ export class CarImageDetailComponent implements OnInit {
     this.carService.getCarDetailsByCarId(carId).subscribe(response => {
       this.cars = response.data;
       this.dataLoaded = true;
+      // console.log("çalıştı")
+      // console.log(response.data)
     });
   }
 
@@ -38,7 +42,7 @@ export class CarImageDetailComponent implements OnInit {
     this.carImageService.getCarImagesByCarId(carId).subscribe(response => {
       this.carImages = response.data;
       this.dataLoaded = true;
-      console.log(response.data);
+     this.toastrService.success("mesaj","detay");
     })
   }
 

@@ -1,8 +1,15 @@
 import { Rental } from "./rental";
 
 export class CartItem {
-    rental:Rental;
-    totalPrice:number;
+    carId: number;
+    cUsersId: number;
+    rentDate: Date;
+    returnDate: Date;
+    brandName: string;
+    colorName: string;
+    modelYear: number;
+    dailyPrice: number;
+    totalPrice: number;
 }
 
 export const CartItems:CartItem[]=[];

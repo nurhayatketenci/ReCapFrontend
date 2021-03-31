@@ -33,18 +33,21 @@
                 <th>Model</th>
                 <th>Günlük Kirası</th>
                 <th>Açıklama</th>
+                <th></th>
             </tr>
         </thead>
-        <tr *ngFor="let car of cars">
+        <tbody>
+          <tr *ngFor="let car of cars">
             <td>{{car.carId}}</td>
             <td>{{car.brandName}}</td>
             <td>{{car.colorName}}</td>
             <td>{{car.modelYear}}</td>
             <td>{{car.dailyPrice}}</td>
             <td>{{car.description}}</td>
-            <td><button routerLink="rent/car/{{car.carId}}">Kirala</button></td>
+            <td><button class="btn btn-primary" routerLink="rent/car/{{car.carId}}">Kirala</button></td>
         </tr>
-        
+        </tbody>
+    
     </table>
   </div>
   

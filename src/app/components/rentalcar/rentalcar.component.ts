@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { Customer } from 'src/app/models/customer';
+import { RentableCar } from 'src/app/models/rentablecar';
 import { Rental } from 'src/app/models/rental';
 import { CarService } from 'src/app/services/car.service';
+import { CartService } from 'src/app/services/cart.service';
+
 import { CustomerService } from 'src/app/services/customer.service';
 import { RentalService } from 'src/app/services/rental.service';
 
@@ -15,12 +19,14 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class RentalcarComponent implements OnInit {
   
+  carId:number;
   rentalAddForm: FormGroup;
   customers: Customer[] = []; // CustomerDetailDto listesi
   currentCar: CarDetailDto;
   rentDate: Date;
   returnDate: Date;
-  totalPrice:number = 0;
+  totalPrice:number;
+  rentableCar:RentableCar
   dataLoaded = false;
   constructor(
     private activedRoute: ActivatedRoute,
@@ -29,48 +35,89 @@ export class RentalcarComponent implements OnInit {
     private carService: CarService,
     private customerService: CustomerService,
     private rentalService: RentalService,
+    private toastrService:ToastrService,
+    private cartService:CartService,
+    
  
   ) { }
 
   ngOnInit(): void {
-    this.rentDate = new Date();
-    this.returnDate = new Date();
-
-    this.getCustomerDetails();
     this.createRentalAddForm();
-
-    this.activedRoute.queryParams.subscribe((params) => {
-      if (params.carId) {
-        this.getCarDetail(params.carId);
+   this.activedRoute.params.subscribe((params) => {
+      if (params["carId"]) {
+        this.getCarDetail(params["carId"]);
       }
     });
   }
   
   getCarDetail(carId: number) {
     this.carService.getCarById(carId).subscribe((response) => {
-      this.currentCar= response.data[0];
+    this.currentCar= response.data[0];
+    console.log(response.data)
+    this.rentDate = new Date();
+    this.returnDate = new Date();
+  
+    this.getCustomerDetails();
+  
+      // console.log(this.currentCar)
+      //tam ekleme kontrolü
+    
     });
   }
 
   createRentalAddForm() {
-    this.rentalAddForm = this.formBuilder.group({
-      customerId: ['', Validators.required],
+     this.rentalAddForm = this.formBuilder.group({
+      cUsersId: ['', Validators.required],
       rentDate: ['', Validators.required],
-      carId: [''],
-      returnDate: [''],
-    });
+      returnDate: ['']
+     });
   }
-
-
+  
+  checkCarRent(){
+   
+    this.rentalService.getRentalByCarId(this.currentCar.carId).subscribe(response=>{
+      if(response.data[0]==null){
+      this.addToCart()
+      return true
+      }
+      let lastItem=response.data[response.data.length-1]
+      if(lastItem.returnDate==null){
+        this.toastrService.error("dönüş tarihi belirtilmedi.")
+      return this.router.navigate(['/cars'])
+      }
+      let returnDate=new Date(lastItem.returnDate)
+      let rentDate=new Date(this.rentalAddForm.value.rentDate)
+      if(rentDate < returnDate){
+      this.toastrService.warning("Bu tarihlerde kiralayamazsınız")
+      return this.router.navigate(['/cars'])
+      }
+      this.addToCart()
+      return true
+    })
+  }
   addToCart() {
-    if (this.rentalAddForm.valid) {
-      let rentalModel = Object.assign({}, this.rentalAddForm.value);
-      rentalModel.carId = this.currentCar.carId;
     
-    } else {
-      console.log('Formunuz eksik', 'Hata');
-    }
-  }
+    if (this.rentalAddForm.valid) {
+      let carId=Number(this.activedRoute.snapshot.paramMap.get('carId'))
+      this.rentalAddForm.value.cUsersId=Number(this.rentalAddForm.value.cUsersId)
+      this.rentableCar = Object.assign({
+        carId:carId
+        
+      }, this.rentalAddForm.value);
+       //this.cartService.addToCart(this.rentableCar)
+      
+       this.rentalService.setRentingCar(this.rentableCar)
+       this.toastrService.success('Sepete eklendi','yönlendiriliyorsunuz.')
+       return this.router.navigate(['/creditCard'])
+      
+     }
+   
+       return  this.toastrService.error('Formunuz eksik', 'Hata');
+
+   }
+
+ 
+ 
 
  
   getCustomerDetails() {
@@ -79,7 +126,7 @@ export class RentalcarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
-  
+
   calcTotalPrice() {
     let startDate = new Date(this.rentalAddForm.value.rentDate);
     let endDate = new Date(this.rentalAddForm.value.returnDate);
@@ -89,8 +136,12 @@ export class RentalcarComponent implements OnInit {
       this.totalPrice = 0;    
     } else {
       let dateDiff = Math.floor((endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60 / 24);
+      
       this.totalPrice = dateDiff * this.currentCar.dailyPrice;
+
+     
     }
+    console.log(this.totalPrice)
   }
 
 

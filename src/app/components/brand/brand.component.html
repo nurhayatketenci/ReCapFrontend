@@ -27,3 +27,6 @@
     *ngFor="let brand of brands | filterPipe:filterText" 
     [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>  
 </ul>
+  <button  type="button" class="btn btn-primary btn-xs" routerLink="brands/detail" >Detayına git</button>
+
+

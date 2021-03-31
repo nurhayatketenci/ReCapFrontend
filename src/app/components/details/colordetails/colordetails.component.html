@@ -1,0 +1,20 @@
+<table  class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Renk Id</th>
+            <th>Renk Adı</th>
+            <th></th>
+            <th></th>
+            </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let color of colors ">
+        <td style="color: black;"> <b>{{color.colorId}} </b> </td>
+        <td style="color: black;"> <b> {{color.colorName |uppercase}}</b> </td>
+        <td> <button type="button" class="btn btn-danger" routerLink="/colors/update/{{color.colorId}}">Rengi Güncelle</button></td>
+        <td> <button type="button" class="btn btn-danger">Rengi Sil</button></td>
+    </tr>
+   </tbody>
+  
+</table>
+<button type="button" class="btn btn-danger" routerLink="/colors/add">Renk Ekle</button>

@@ -1,0 +1,25 @@
+   
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            
+            <th>Marka</th>
+            <th>Renk</th>
+            <th>Model</th>
+            <th>resim</th>
+            <th></th>
+            </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars ">
+        <td style="color: black;"><b>{{car.brandName |uppercase}} </b></td>
+        <td style="color: black;"><b>{{car.colorName}}</b></td>
+        <td style="color: black;"><b> {{car.modelYear}}</b></td>
+        <td> <button type="button" class="btn btn-danger" routerLink="/cars/update/{{car.carId}}">Arabayı Güncelle</button></td>
+        <td> <button type="button" class="btn btn-danger">Arabayı Sil</button></td>
+       
+  </tr>
+    </tbody>
+  
+</table>
+<button type="button" class="btn btn-danger"  routerLink="/cars/add">Araba Ekle</button>

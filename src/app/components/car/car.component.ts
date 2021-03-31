@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { Color } from 'src/app/models/color';
@@ -15,14 +16,17 @@ export class CarComponent implements OnInit {
 cars:CarDetailDto[]=[];
 brands: Brand[] = [];
 colors: Color[] = [];
-dataLoaded=false
+dataLoaded=true
 filterCar="";
 brandFilter: number = 0;
 colorFilter: number = 0;
 
 
   constructor(private carService:CarService
-    ,private activatedRoute:ActivatedRoute,private colorService:ColorService,private brandService:BrandService) { }
+    ,private activatedRoute:ActivatedRoute,
+    private colorService:ColorService,
+    private brandService:BrandService,
+    private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -73,4 +77,5 @@ getCarsByBrand(brandId:number){
   this.brandFilter = 0;
   this.colorFilter = 0;
 }
+
 }

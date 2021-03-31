@@ -17,23 +17,43 @@
    
 <table *ngIf="dataLoaded==true" class="table table-success table-striped">
     <thead>
-        <tr>
+        <tr style="color: black;">
             
-            <th>Marka</th>
+            <th >Marka</th>
             <th>Renk</th>
             <th>Model</th>
             <th>resim</th>
-           </tr>
+            <th></th>
+            </tr>
     </thead>
-   <tr *ngFor="let car of cars ">
-        <td>{{car.brandName |uppercase}}</td>
-        <td>{{car.colorName}}</td>
-        <td>{{car.modelYear}}</td>
-        <td><button routerLink="/cars/image/{{car.carId}}">Detaya git</button></td>
-        <td><button routerLink="/rent/car/{{car.carId}}">Kirala</button></td>
+    <tbody>
+      <tr *ngFor="let car of cars " style="color: black;">
+        <td ><b>{{car.brandName |uppercase}} </b></td>
+        <td ><b>{{car.colorName}}</b></td>
+        <td ><b> {{car.modelYear}}</b></td>
+        <td><button type="button" class="btn btn-primary btn-xs" routerLink="/cars/image/{{car.carId}}">Detaya git</button></td>
+        <td><button  type="button" class="btn btn-primary btn-xs" routerLink="/rent/car/{{car.carId}}">Kirala</button></td>
        
-    </tr>
+  </tr>
+    </tbody>
+  
 </table>
+<button  type="button" class="btn btn-primary btn-xs" routerLink="/cars/detail" >Detayına git</button>
+<div class="card" style="width: 18rem;">
+ 
+  <ul *ngFor="let car of cars " class="list-group list-group-flush">
+    <div class="card-body">
+      <h5    class="card-title">  {{car.brandName |uppercase}}</h5>
+    </div>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div> 
 
 
 
