@@ -2,20 +2,17 @@
   <div class="card-header"><h5 class="title">Araç kirala </h5></div>
 
   <div class="card-body">
-
-    <form [formGroup]="rentalAddForm" (ngSubmit)="checkCarRent()">
-
-      <div class="mb-3">
-        <label for="productName">Müşteri </label>
-        <div class="form-group">
-
-          <select id="cUsersId" class="form-select"  formControlName="cUsersId">
-            <option [value]="customer.cUsersId" *ngFor="let customer of customers">{{ customer.cUsersId }} {{ customer.companyName }}</option>
-          </select>
-
-        </div>
+    <div class="mb-3">
+      <label for="productName">Müşteri </label>
+      <div class="form-group">
+          <select id="cUsersId" class="form-select"  [(ngModel)]="customerId">
+          <option [value]="customer.cUsersId" *ngFor="let customer of customers">{{ customer.cUsersId }} {{ customer.companyName }}</option>
+        </select>
       </div>
- 
+    </div>
+
+    <form [formGroup]="rentalAddForm">
+    
       <div class="mb-3">
         <label for="productName">Kiralama tarihi</label>
         <div class="form-group">
@@ -31,12 +28,14 @@
           formControlName="returnDate" min="{{ returnDate | date:'yyyy-MM-dd' }}"  >
         </div>
       </div>
-      <div class="card-footer">
-        <button class="btn btn-fill btn-primary"  >Sepete Ekle</button>
-      </div>
+     
     
     
     </form>
+    <div class="card-footer">
+        
+      <button class="btn btn-fill btn-primary" (click)='addToCart()' routerLink="/cart" >Sepete Ekle</button>
+    </div>
     <div class="mb-3">
       <label  for="productName">Toplam ücret</label>
       <div class="form-group"> <h4> {{ totalPrice }} TL </h4> </div>

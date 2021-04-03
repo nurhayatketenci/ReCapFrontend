@@ -1,8 +1,6 @@
-import { Rental } from "./rental";
-
 export class CartItem {
     carId: number;
-    cUsersId: number;
+    customerId: number;
     rentDate: Date;
     returnDate: Date;
     brandName: string;

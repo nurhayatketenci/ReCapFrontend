@@ -27,7 +27,6 @@ export class ColorAddComponent implements OnInit {
        if(this.colorAddForm.valid){
         let colorModel=Object.assign({}, this.colorAddForm.value)
         this.colorService.addColor(colorModel).subscribe(data=>{
-        console.log(data)
          this.toastrService.success(data.message,"BAŞARILI")
         })
         }

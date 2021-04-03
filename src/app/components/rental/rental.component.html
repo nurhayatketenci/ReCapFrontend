@@ -5,20 +5,14 @@
     <thead>
         <tr>
         <th>Id</th>
-        <th>Car Id</th>
-        <th>Brand Name</th>
-        <th>Customer Name</th>
-        <th>User Name</th>
+        <th>Customer Id</th>
         <th>Rent date</th>
         <th>Return date</th>
     </tr>
     </thead>
     <tr *ngFor="let rental of rental">
-        <td>{{rental.id}}</td>
-        <td>{{rental.carId}}</td>
-        <td>{{rental.brandName}}</td>
-        <td>{{rental.customerName}}</td>
-        <td>{{rental.userName}}</td>
+        <td>{{rental.rentId}}</td>
+        <td>{{rental.customerId}}</td>
         <td>{{rental.rentDate}}</td>
         <td>{{rental.returnDate}}</td>
     

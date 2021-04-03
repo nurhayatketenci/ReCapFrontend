@@ -27,7 +27,6 @@ export class BrandAddComponent implements OnInit {
        if(this.brandAddForm.valid){
         let brandModel=Object.assign({}, this.brandAddForm.value)
         this.brandService.addBrand(brandModel).subscribe(data=>{
-        console.log(data)
          this.toastrService.success(data.message,"BAŞARILI")
         })
         }
@@ -39,7 +38,6 @@ export class BrandAddComponent implements OnInit {
       if(this.brandAddForm.valid){
         let brandModel=Object.assign({}, this.brandAddForm.value)
         this.brandService.deleteBrand(brandModel).subscribe(data=>{
-        console.log(data)
          this.toastrService.success("BAŞARILI")
         })
         }

@@ -28,7 +28,6 @@ carId:number
         this.carId=params["carId"]
         this.getCarById(params["carId"])
       }
-      console.log(params["carId"])
       
     })
   
@@ -48,12 +47,10 @@ carId:number
 
   
   updateCar(){
-    console.log(this.carUpdateForm.value)
     if(this.carUpdateForm.valid){      
       let carModel = Object.assign({},this.carUpdateForm.value)
       carModel.carId=Number(this.carId)
       carModel.carName=String(this.car.carName)
-      console.log(carModel)
        this.carService.updateCar(carModel).subscribe(response=>{
         this.toastrService.success("güncellendi")
       },responseError=>{

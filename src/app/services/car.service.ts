@@ -25,7 +25,6 @@ export class CarService {
    getCarsByBrand(brandId:number):Observable<ListResponseModel<CarDetailDto>>{
      
     let newPath=this.apiUrl+"cars/getbybrand?brandId="+brandId
-    // console.log(newPath);
         return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
     }
     getCarsByColor(colorId:number):Observable<ListResponseModel<CarDetailDto>>{
@@ -33,7 +32,7 @@ export class CarService {
           return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
       }
       getCarsBySelect(brandId:number, colorId:number):Observable<ListResponseModel<CarDetailDto>>{
-        let newPath =environment.production + "cars/getbyselected?brandId="+brandId+"&colorId="+colorId
+        let newPath =this.apiUrl+"cars/getbyselected?brandId="+brandId+"&colorId="+colorId
         return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
       }
       getCarById(id: number): Observable<ListResponseModel<CarDetailDto>> {
@@ -42,7 +41,6 @@ export class CarService {
      }
      getCarDetailsByCarId(carId:number):Observable<ListResponseModel<CarDetailDto>>{
       let newPath = this.apiUrl + "cars/getcardetailbycarid?carId=" + carId;
-      // console.log(newPath)
       return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
     }
     getcarbybrandandcolorid(brandId:number,colorId:number):Observable<ListResponseModel<CarDetailDto>>{
@@ -50,7 +48,7 @@ export class CarService {
       return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
     }
     add(car:CarDetailDto):Observable<ResponseModel>{
-    return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/add",car)
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/add",car,)
     }
     updateCar(car:Car):Observable<SingleResponseModel<Car>>{ 
       return this.httpClient.post<SingleResponseModel<Car>>(this.apiUrl+"cars/update",car)

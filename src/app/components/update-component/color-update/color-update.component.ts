@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Color } from 'src/app/models/color';
-import { BrandService } from 'src/app/services/brand.service';
 import { ColorService } from 'src/app/services/color.service';
 
 @Component({

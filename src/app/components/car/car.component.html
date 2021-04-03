@@ -4,57 +4,35 @@
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
- <!-- <div class="mb-3">
+ <div class="mb-3">
     <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" for="exampleFormControlInput1" class="form-label">Araba Ara</label>
-    <input type="text" [(ngModel)]="filterCar" class="form-control" id="filterCar" placeholder="arama ifadesi giriniz">
+    <input type="text" [(ngModel)]="filterCarText" class="form-control" id="filterCarText" placeholder="arama ifadesi giriniz">
   </div>
   <div>
-    <div *ngIf="filterCar.length>2" class="alert alert-primary">
-      {{filterCar}} aradınız.
-   </div> -->
-  
+    <div *ngIf="filterCarText.length>2"  class="alert alert-primary">
+      {{filterCarText}} aradınız.
+   </div>
    <app-filter></app-filter>
-   
-<table *ngIf="dataLoaded==true" class="table table-success table-striped">
-    <thead>
-        <tr style="color: black;">
-            
-            <th >Marka</th>
-            <th>Renk</th>
-            <th>Model</th>
-            <th>resim</th>
-            <th></th>
-            </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let car of cars " style="color: black;">
-        <td ><b>{{car.brandName |uppercase}} </b></td>
-        <td ><b>{{car.colorName}}</b></td>
-        <td ><b> {{car.modelYear}}</b></td>
-        <td><button type="button" class="btn btn-primary btn-xs" routerLink="/cars/image/{{car.carId}}">Detaya git</button></td>
-        <td><button  type="button" class="btn btn-primary btn-xs" routerLink="/rent/car/{{car.carId}}">Kirala</button></td>
-       
-  </tr>
-    </tbody>
-  
-</table>
-<button  type="button" class="btn btn-primary btn-xs" routerLink="/cars/detail" >Detayına git</button>
-<div class="card" style="width: 18rem;">
- 
-  <ul *ngFor="let car of cars " class="list-group list-group-flush">
-    <div class="card-body">
-      <h5    class="card-title">  {{car.brandName |uppercase}}</h5>
+   <div class="row" >
+    <div *ngFor="let car of cars | filterCar:filterCarText" class="card" style="width: 16rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{car.brandName}}</h5>
+      </div>
+      <img src="{{apiUrl}}{{car.imagePath}}"/>
+     <ul class="list-group list-group-flush">
+          <li class="list-group-item">Açıklama: {{car.description}} </li>
+          <li class="list-group-item"> Model: {{car.modelYear}}</li>
+          <li class="list-group-item"> Günlük Fiyat: {{car.dailyPrice}}</li>
+          <li class="list-group-item" > Araba adı: {{car.carName}}</li>
+     </ul>
+      <div class="card-body">
+        <section style="float:left">
+          <button type="button" class="btn btn-secondary"  routerLink="/cars/image/{{car.carId}}">İncele</button>
+        </section>
+        <section style="float:right">
+          <button style="margin-left: 10px;" type="button" class="btn btn-primary btn-xs" routerLink="/rent/car/{{car.carId}}">Kirala</button>        </section>
+      </div>
     </div>
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
   </div>
-</div> 
-
-
-
+<button  type="button" class="btn btn-primary btn-xs" routerLink="/cars/detail" >Detayına git</button>
 
