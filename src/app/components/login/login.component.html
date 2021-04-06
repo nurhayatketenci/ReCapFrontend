@@ -23,15 +23,10 @@
           />
           <label for="floatingPassword">Parola</label>
         </div>
-  
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me" /> Remember me
-          </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" (click)="login()">
+        <button class="w-100 btn btn-lg btn-primary" routerLink="/cars" (click)="login()">
           Giriş yap
         </button>
+        <a routerLink="/register"> Hesabınız yok mu kayıt olun.</a>
       </form>
     </main>
   </body>

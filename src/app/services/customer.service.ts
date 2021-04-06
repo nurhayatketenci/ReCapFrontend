@@ -13,4 +13,5 @@ export class CustomerService {
   getCustomer():Observable<ListResponseModel<Customer>>{
    return this.httpClient.get<ListResponseModel<Customer>>(this.apiUrl);
    }
+   
 }

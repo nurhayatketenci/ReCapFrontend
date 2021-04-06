@@ -1,22 +1,22 @@
-<h2 class="text-center">Araba Listesi</h2>
 <div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
     <div class="spinner-border text-success" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
+
  <div class="mb-3">
     <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" for="exampleFormControlInput1" class="form-label">Araba Ara</label>
     <input type="text" [(ngModel)]="filterCarText" class="form-control" id="filterCarText" placeholder="arama ifadesi giriniz">
   </div>
-  <div>
+  <div >
     <div *ngIf="filterCarText.length>2"  class="alert alert-primary">
       {{filterCarText}} aradınız.
    </div>
-   <app-filter></app-filter>
+   <!-- <app-filter></app-filter> -->
    <div class="row" >
     <div *ngFor="let car of cars | filterCar:filterCarText" class="card" style="width: 16rem;">
       <div class="card-body">
-        <h5 class="card-title">{{car.brandName}}</h5>
+        <h5 class="card-title"><b>{{car.brandName}}</b></h5>
       </div>
       <img src="{{apiUrl}}{{car.imagePath}}"/>
      <ul class="list-group list-group-flush">
@@ -24,6 +24,8 @@
           <li class="list-group-item"> Model: {{car.modelYear}}</li>
           <li class="list-group-item"> Günlük Fiyat: {{car.dailyPrice}}</li>
           <li class="list-group-item" > Araba adı: {{car.carName}}</li>
+          <li class="list-group-item" > Findeks Puanı: {{car.findeksPuan}}</li>
+          
      </ul>
       <div class="card-body">
         <section style="float:left">
@@ -35,4 +37,3 @@
     </div>
   </div>
 <button  type="button" class="btn btn-primary btn-xs" routerLink="/cars/detail" >Detayına git</button>
-

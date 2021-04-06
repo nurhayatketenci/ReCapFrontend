@@ -34,6 +34,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { FilterCarPipe } from './pipes/filter-car.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { FilterCarPipe } from './pipes/filter-car.pipe';
     ColorUpdateComponent,
     LoginComponent,
     RegisterComponent,
-    FilterCarPipe
+    FilterCarPipe,
+  
     
   
     

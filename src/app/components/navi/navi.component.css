@@ -1,0 +1,26 @@
+ #navi{
+    background-color: #252525;
+   
+} 
+#button{
+  background-color: #78c2ad;
+  font-family: sans-serif;
+  color: black;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+  }
+  .navbar-brand {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .navbar-nav .nav-item:hover {
+    background-color: rgba(180, 190, 203, 0.4);
+  }
+  
+

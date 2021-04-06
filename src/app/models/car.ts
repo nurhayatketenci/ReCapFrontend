@@ -6,4 +6,5 @@ export interface Car{
     dailyPrice:number
     description:string
     carName:string
+    findeksPuan:number
 }

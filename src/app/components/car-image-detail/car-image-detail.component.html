@@ -33,6 +33,7 @@
                 <th>Model</th>
                 <th>Günlük Kirası</th>
                 <th>Açıklama</th>
+                <th>Findeks Puanı</th>
                 <th></th>
             </tr>
         </thead>
@@ -44,6 +45,7 @@
             <td>{{car.modelYear}}</td>
             <td>{{car.dailyPrice}}</td>
             <td>{{car.description}}</td>
+            <td>{{car.findeksPuan}}</td>
             <td><button class="btn btn-primary" routerLink="/rent/car/{{car.carId}}">Kirala</button></td>
         </tr>
         </tbody>

@@ -9,4 +9,5 @@ export interface CarDetailDto{
     colorId:number
     carName:string
     imagePath:string
+    findeksPuan:number
 }

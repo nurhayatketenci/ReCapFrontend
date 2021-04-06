@@ -50,9 +50,9 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   
 
-  { path: 'brands/update/:brandId', component: BrandUpdateComponent },
-  { path: 'brands/detail', component: BranddetailsComponent },
-  { path: 'brands/add', component: BrandAddComponent },
+  { path: 'brands/update/:brandId', component: BrandUpdateComponent,canActivate:[LoginGuard] },
+  { path: 'brands/detail', component: BranddetailsComponent ,canActivate:[LoginGuard]},
+  { path: 'brands/add', component: BrandAddComponent,canActivate:[LoginGuard] },
   
 
   { path: 'login', component: LoginComponent },
