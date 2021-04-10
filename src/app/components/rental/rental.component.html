@@ -1,21 +1,22 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-info" role="status">
-    <span class="visually-hidden">Loading...</span>
+<div class="container" style="background-color: white;">
+    <div class="col-md-7">
+        <table class="table">
+            <thead>
+                <tr>
+                
+                <th>Id</th>
+                <th>Customer Id</th>
+                <th>Rent date</th>
+                <th>Return date</th>
+            </tr>
+            </thead>
+            <tr *ngFor="let rental of rental">
+                <td>{{rental.rentId}}</td>
+                <td>{{rental.customerId}}</td>
+                <td>{{rental.rentStartDate}}</td>
+                <td>{{rental.rentEndDate}}</td>
+             </tr>
+        </table>
+    </div>
 </div>
-<table *ngIf="dataLoaded!=false" class="table">
-    <thead>
-        <tr>
-        
-        <th>Id</th>
-        <th>Customer Id</th>
-        <th>Rent date</th>
-        <th>Return date</th>
-    </tr>
-    </thead>
-    <tr *ngFor="let rental of rental">
-        <td>{{rental.rentId}}</td>
-        <td>{{rental.customerId}}</td>
-        <td>{{rental.rentDate}}</td>
-        <td>{{rental.returnDate}}</td>
-    
-    </tr>
-</table>
+

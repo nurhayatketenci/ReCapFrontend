@@ -17,7 +17,6 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./rentalcar.component.css'],
 })
 export class RentalcarComponent implements OnInit {
-  // kullanılmayanları sil
   carId: number;
   rental: Rental;
   rentalAddForm: FormGroup;
@@ -64,8 +63,8 @@ export class RentalcarComponent implements OnInit {
 
   createRentalAddForm() {
     this.rentalAddForm = this.formBuilder.group({
-      rentDate: ['', Validators.required],
-      returnDate: [''],
+      rentStartDate: ['', Validators.required],
+      rentEndDate: [''],
     });
   }
   getCustomerDetails() {
@@ -74,9 +73,9 @@ export class RentalcarComponent implements OnInit {
       console.log(response.data);
     });
   }
-  addToCart() {
+  async addToCart() {
     if (this.rentalAddForm.invalid) {
-      return this.toastrService.error('Formunuz eksik', 'Hata');
+      this.toastrService.error('Formunuz eksik', 'Hata');
     }
     
    let rentalModel = Object.assign({}, this.rentalAddForm.value);
@@ -88,20 +87,31 @@ export class RentalcarComponent implements OnInit {
     rentalModel.modelYear = this.currentCar.modelYear;
     rentalModel.dailyPrice = this.currentCar.dailyPrice;
     rentalModel.totalPrice = this.totalPrice;
+    console.log(rentalModel)
+    console.log(await this.isRentable(rentalModel))
+    if(!await this.isRentable(rentalModel)){
+      this.toastrService.error("Bu araba belirlenen tarihler arasında zaten kiralanmış.")
+      this.router.navigate(['/cars'])
+      return
+    }
     this.getCustomerById(rentalModel.customerId);
-
     if (this.customer.findexPuan < this.currentCar.findeksPuan) {
-      return this.toastrService.error('findeks puanınız yetersizdir.');
+      this.toastrService.error('findeks puanınız yetersizdir.');
+      return
     }
     this.cartService.addToCart(rentalModel);
     this.toastrService.success('Sepete eklendi', 'Sepet');
-    return this.router.navigate(['/cart']);
+    this.router.navigate(['/cart']);
    
   }
   getCustomerById(customerId: number) {
     this.customer = this.customers.find(
       (customer) => customer.cUsersId == customerId
     );
+  }
+
+  async isRentable(rental:Rental){
+    return (await this.rentalService.isCarAvailable(rental).toPromise()).success
   }
 
   calcTotalPrice() {

@@ -6,7 +6,7 @@
       {{filterColorText}} aradınız.
    </div>
 <ul class="list-group">
-    <li  [class]="getAllColorClass()" routerLink = "/cars">Tüm Renkler</li>
+    <li  [class]="getAllColorClass()" style="background-color: #ff4136;"  routerLink = "/cars">Tüm Renkler</li>
     <li (click)="setCurrentColor(color)"
     routerLink = "/cars/color/{{color.colorId}}"
     *ngFor="let color of colors | filterColorPipe:filterColorText" 
@@ -14,6 +14,6 @@
     {{color.colorName}}</li>
 </ul>
 <div class="d-grid">
-  <button class="btn btn-primary mt-2" routerLink="/colors/detail">Detayına git</button>
+  <button *ngIf="isAuth()" class="btn btn-danger mt-2" routerLink="/colors/detail">Detayına git</button>
 </div>
 

@@ -19,6 +19,7 @@ import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { HomeComponent } from './components/home/home.component';
+import { RentalComponent } from './components/rental/rental.component';
 
 
 
@@ -41,13 +42,13 @@ const routes: Routes = [
   { path: 'colors/detail', component: ColordetailsComponent, canActivate: [LoginGuard] },
 
 
-  { path: 'rent/car/:carId', component: RentalcarComponent },
+  { path: 'rent/car/:carId', component: RentalcarComponent, canActivate: [LoginGuard]},
 
 
-  { path: 'creditCard/:cUsersId', component: CreditCardComponent },
+  { path: 'creditCard/:cUsersId', component: CreditCardComponent, canActivate: [LoginGuard] },
 
 
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent, canActivate: [LoginGuard] },
 
 
   { path: 'brands/update/:brandId', component: BrandUpdateComponent, canActivate: [LoginGuard] },
@@ -59,11 +60,12 @@ const routes: Routes = [
 
   { path: 'register', component: RegisterComponent },
 
-  { path: 'user/update', component: UserDetailComponent },
+  { path: 'user/update', component: UserDetailComponent , canActivate: [LoginGuard]},
 
 
   { path: 'home', component: HomeComponent },
 
+  { path: 'rental', component: RentalComponent },
 
 
 

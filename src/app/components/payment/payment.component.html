@@ -1,60 +1,67 @@
-<div class="card-header text-center">
-  <strong>Ödeme İşlemi</strong>
-</div>
-
-<div class="mb-3">
-  <p>Toplam Tutar : <strong>{{ TotalPrice }}</strong> TL</p>
-</div>
-
-<form [formGroup]="cardForm" class="card-header tet-center" id="form" >
-  <div class="form-floating mb-3 ">
-    <input type="text" id="nameonthecard" class="form-control"
-            placeholder="nameOnTheCard" formControlName="nameonthecard">
-     <label for="nameonthecard">Kart Üzerindeki Ad ve Soyad</label>
-  </div>
-
-  <div class="form-floating mb-3">
-     <input type="number" id="cardnumber" class="form-control"
-            placeholder="cardnumber" formControlName="cardnumber">
-     <label for="cardnumber">Kart Numarası</label>
-  </div>
-  
-  <div class="row">
-     <div class="col-lg-4">
-        <div class="form-floating mb-3">
-           <input type="number" id="expirationmonth" class="form-control"
-                  placeholder="expirationmonth" formControlName="expirationmonth">
-           <label for="expirationmonth">Ay</label>
-        </div>
-     </div>
-     <div class="col-lg-4">
-      <div class="form-floating mb-3">
-         <input type="number" id="expirationyear" class="form-control"
-                placeholder="expirationyear" formControlName="expirationyear">
-         <label for="expirationyear">Yıl</label>
+<div class="container mt-5 mb-5" style=" background-color:#dddddd; border-radius: 15px;">
+  <div class="row" >
+    <div class="col-md-12">
+      <div class="card-header text-center text-danger">
+        <strong>Ödeme İşlemi</strong>
       </div>
-   </div>
-     <div class="col-lg-4">
-        <div class="form-floating mb-3">
-           <input type="number" id="cardcvv" class="form-control"
-                  placeholder="cardcvv" formControlName="cardcvv">
-           <label for="cardcvv">CVV</label>
+      
+      <div class="mb-3 text-danger">
+        <p>Toplam Tutar : <strong>{{ TotalPrice }}</strong> TL</p>
+      </div>
+      
+      <form [formGroup]="cardForm" class="card-header tet-center" id="form" >
+        <div class="form-floating mb-3 ">
+          <input type="text" id="nameonthecard" class="form-control"
+                  placeholder="nameOnTheCard" formControlName="nameonthecard">
+           <label for="nameonthecard">Kart Üzerindeki Ad ve Soyad</label>
         </div>
-     </div>
+      
+        <div class="form-floating mb-3">
+           <input type="number" id="cardnumber" class="form-control"
+                  placeholder="cardnumber" formControlName="cardnumber">
+           <label for="cardnumber">Kart Numarası</label>
+        </div>
+        
+        <div class="row">
+           <div class="col-lg-4">
+              <div class="form-floating mb-3">
+                 <input type="number" id="expirationmonth" class="form-control"
+                        placeholder="expirationmonth" formControlName="expirationmonth">
+                 <label for="expirationmonth">Ay</label>
+              </div>
+           </div>
+           <div class="col-lg-4">
+            <div class="form-floating mb-3">
+               <input type="number" id="expirationyear" class="form-control"
+                      placeholder="expirationyear" formControlName="expirationyear">
+               <label for="expirationyear">Yıl</label>
+            </div>
+         </div>
+           <div class="col-lg-4">
+              <div class="form-floating mb-3">
+                 <input type="number" id="cardcvv" class="form-control"
+                        placeholder="cardcvv" formControlName="cardcvv">
+                 <label for="cardcvv">CVV</label>
+              </div>
+           </div>
+        </div>
+       
+        <div class="text-end">
+          <button  type="button" routerLink="/cars" (click)="addPayment()" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Ödeme Yap
+          </button>
+        </div>
+      
+      </form>
+      <div class="form-check">
+        <input [(ngModel)]="save" class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Kartımı Hatırla
+        </label>
+      </div> 
+      <app-registered-cards (valueChange)='getCardValue($event)'></app-registered-cards>
+      
+    </div>
   </div>
- 
-  <div class="text-end">
-    <button  type="button" (click)="addPayment()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Ödeme Yap
-    </button>
-  </div>
-
-</form>
-<div class="form-check">
-  <input [(ngModel)]="save" class="form-check-input" type="checkbox" id="gridCheck">
-  <label class="form-check-label" for="gridCheck">
-    Kartımı Hatırla
-  </label>
-</div> 
-<app-registered-cards (valueChange)='getCardValue($event)'></app-registered-cards>
+</div>
 

@@ -1,4 +1,4 @@
-<table class="table table-active">
+<table class="table table-active text-danger">
   <thead>
     <tr>
       <th>Kart Sahibi</th>
@@ -22,7 +22,7 @@
       <td>
         <b>{{ card?.expirationYear }}</b>
       </td>
-      <td><button type="button" class="btn btn-primary" (click)="getCard(card.id)">Kullan</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="getCard(card.id)">Kullan</button></td>
     </tr>
   </tbody>
 </table>

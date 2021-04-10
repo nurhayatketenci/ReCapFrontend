@@ -1,7 +1,7 @@
 <body class="text-center"  >
-    <main class="form-signin" style="margin-top: 15%;background-size: 400px 600px;background-image: url(https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8c3BhY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+    <main class="form-signin " style="margin-bottom: 10%; background-color:#dddddd; border-radius: 15px;">
       <form [formGroup]="loginForm" style="height: 300px;">
-        <h1 class="h3 mb-3 fw-normal" style="color: aliceblue;">Giriş yap</h1>
+        <h1 class="h3 mb-3 fw-normal text-danger" ><b>Giriş yap</b></h1>
   
         <div class="form-floating">
           <input
@@ -23,10 +23,10 @@
           />
           <label for="floatingPassword">Parola</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" routerLink="/cars" (click)="login()">
+        <button class="w-100 btn btn-lg btn-danger" routerLink="/cars" (click)="login()">
           Giriş yap
         </button>
-        <a routerLink="/register"> Hesabınız yok mu kayıt olun.</a>
+        <a routerLink="/register"class="text-danger"> Hesabınız yok mu kayıt olun.</a>
       </form>
     </main>
   </body>

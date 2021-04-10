@@ -3,6 +3,8 @@ export class CartItem {
     customerId: number;
     rentDate: Date;
     returnDate: Date;
+    rentStartDate: Date;
+    rentEndDate: Date;
     brandName: string;
     colorName: string;
     modelYear: number;

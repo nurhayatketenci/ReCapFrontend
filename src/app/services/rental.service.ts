@@ -39,9 +39,13 @@ export class RentalService {
   }
   
  
-    isCarAvailable(carId:number):Observable<boolean> {
-      let newPath = this.apiUrl + "rentals/iscaravailable?carId=" + carId;
-      return this.httpClient.get<boolean>(newPath);
+    isCarAvailable(rental:Rental):Observable<SingleResponseModel<Rental>> {
+      let newPath = this.apiUrl + "rentals/iscaravailable";
+      return this.httpClient.post<SingleResponseModel<Rental>>(newPath,rental);
+    }
+    rentalGetAll():Observable<ListResponseModel<Rental>>{
+      let newPath=this.apiUrl+"rentals/getall";
+      return this.httpClient.get<ListResponseModel<Rental>>(newPath)
     }
   
 }

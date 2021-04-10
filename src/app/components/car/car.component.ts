@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { Color } from 'src/app/models/color';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarService } from 'src/app/services/car.service';
 import { RentalService } from 'src/app/services/rental.service';
 @Component({
@@ -27,7 +28,7 @@ export class CarComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private rentalService: RentalService,
-    private route:Router
+    private route:Router,private authService:AuthService
   ) {}
 
   ngOnInit(): void {
@@ -69,21 +70,21 @@ export class CarComponent implements OnInit {
     });
   }
 
-  isCarAvailable(carId: number) {
-    console.log(carId)
-    this.rentalService.isCarAvailable(carId).subscribe(
-      (response) => {
-        console.log(response)
-        this.isCarAvail = response;
-        this.toastrService.success('olumlu sonuç, yönlendirme yapılacak', 'Uyarı');
-        this.route.navigate(["rent/car/"+carId]);
-      },
-      (responseError) => {
-        console.log(responseError)
-        this.toastrService.error('Bu araç kiralanamaz', 'Uyarı');
-      }
-    );
-  }
+  // isCarAvailable(carId: number) {
+  //   console.log(carId)
+  //   this.rentalService.isCarAvailable(carId).subscribe(
+  //     (response) => {
+  //       console.log(response)
+  //       this.isCarAvail = response;
+  //       this.toastrService.success('olumlu sonuç, yönlendirme yapılacak', 'Uyarı');
+  //       this.route.navigate(["rent/car/"+carId]);
+  //     },
+  //     (responseError) => {
+  //       console.log(responseError)
+  //       this.toastrService.error('Bu araç kiralanamaz', 'Uyarı');
+  //     }
+  //   );
+  // }
 
   setFilter() {
     this.activatedRoute.params.subscribe((param) => {
@@ -96,5 +97,8 @@ export class CarComponent implements OnInit {
   clearFilter() {
     this.brandFilter = 0;
     this.colorFilter = 0;
+  }
+  isAuth(){
+    return this.authService.isAuthenticated();
   }
 }

@@ -1,63 +1,67 @@
-<div class="content">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-            <h5 class="title">Araba Güncelle</h5>
-            <div class="card-body"> 
-               <div class="mb-3">
-                  <label for="carName">Araba Adı</label>
-                  <div class="form-group">
-                      <input type="text" id="carName" value="{{car?.carName}}"
-                      class="form-control" placeholder="Araba adı"/>
+<div class="container">
+   <div class="col-md-7">
+      <div class="content">
+         <div class="col-md-12">
+             <div class="card">
+                 <div class="card-header">
+                 <h5 class="title">Araba Güncelle</h5>
+                 <div class="card-body"> 
+                    <div class="mb-3">
+                       <label for="carName">Araba Adı</label>
+                       <div class="form-group">
+                           <input type="text" id="carName" value="{{car?.carName}}"
+                           class="form-control" placeholder="Araba adı"/>
+                        </div>
                    </div>
-              </div>
-                <form [formGroup]="carUpdateForm">
-                    
-                      <div class="mb-3">
-                        <label for="brandId">Marka Id</label>
-                        <div class="form-group">
-                            <input type="number" id="brandId" 
-                            formControlName="brandId" class="form-control" placeholder="Marka Id"/>
-                         </div>
-                      </div>
-                      
-                       <div class="mb-3">
-                        <label for="colorId">Renk Id</label>
-                        <div class="form-group">
-                            <input type="number" id="colorId" 
-                            formControlName="colorId" class="form-control" placeholder="Renk Id"/>
-                         </div>
-                       </div>
-                     <div class="mb-3">
-                        <label for="modelYear">Modeli</label>
-                        <div class="form-group">
-                           <input type="number" id="modelYear"
-                           formControlName="modelYear" class="form-control" placeholder="Modeli"/>
-                        </div>
-                     </div>
-                     
-                     <div class="mb-3">
-                        <label for="dailyPrice">Günlük ücreti</label>
-                        <div class="form-group">
-                           <input type="number" id="dailyPrice" 
-                           formControlName="dailyPrice" class="form-control" placeholder="Günlük ücreti"/>
-                        </div>
-                     </div>
-                    
-                     <div class="mb-3">
-                        <label for="description">Açıklama</label>
-                        <div class="form-group">
-                           <input type="text" id="description" 
-                           formControlName="description" class="form-control" placeholder="Açıklama"/>
-                        </div>
-                     </div>
-                     
-                </form>
-            </div>
-            <div class="card-footer"> 
-                <button class="btn btn-fill btn-primary" (click)="updateCar()">Güncelle</button>
-            </div>
-            </div>
-        </div>
-     </div>   
+                     <form [formGroup]="carUpdateForm">
+                         
+                           <div class="mb-3">
+                             <label for="brandId">Marka Id</label>
+                             <div class="form-group">
+                                 <input type="number" id="brandId" 
+                                 formControlName="brandId" class="form-control" placeholder="Marka Id"/>
+                              </div>
+                           </div>
+                           
+                            <div class="mb-3">
+                             <label for="colorId">Renk Id</label>
+                             <div class="form-group">
+                                 <input type="number" id="colorId" 
+                                 formControlName="colorId" class="form-control" placeholder="Renk Id"/>
+                              </div>
+                            </div>
+                          <div class="mb-3">
+                             <label for="modelYear">Modeli</label>
+                             <div class="form-group">
+                                <input type="number" id="modelYear"
+                                formControlName="modelYear" class="form-control" placeholder="Modeli"/>
+                             </div>
+                          </div>
+                          
+                          <div class="mb-3">
+                             <label for="dailyPrice">Günlük ücreti</label>
+                             <div class="form-group">
+                                <input type="number" id="dailyPrice" 
+                                formControlName="dailyPrice" class="form-control" placeholder="Günlük ücreti"/>
+                             </div>
+                          </div>
+                         
+                          <div class="mb-3">
+                             <label for="description">Açıklama</label>
+                             <div class="form-group">
+                                <input type="text" id="description" 
+                                formControlName="description" class="form-control" placeholder="Açıklama"/>
+                             </div>
+                          </div>
+                          
+                     </form>
+                 </div>
+                 <div class="card-footer"> 
+                     <button class="btn btn-fill btn-primary" routerLink="cars/detail" (click)="updateCar()">Güncelle</button>
+                 </div>
+                 </div>
+             </div>
+          </div>   
+     </div>
+   </div>
 </div>

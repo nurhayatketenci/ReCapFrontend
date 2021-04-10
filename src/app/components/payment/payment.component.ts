@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartItem } from 'src/app/models/cart';
 import { CreditCard } from 'src/app/models/creditCard';
@@ -35,7 +35,8 @@ export class CreditCardComponent implements OnInit {
     private formBuilder: FormBuilder,
     private cartService: CartService,
     private activatedRoute: ActivatedRoute,
-    private rentalService: RentalService
+    private rentalService: RentalService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +63,6 @@ export class CreditCardComponent implements OnInit {
 
   getCardValue(event: any) {
     this.card = event;
-    console.log(event)
     this.loadCard()
   }
 
@@ -92,11 +92,12 @@ export class CreditCardComponent implements OnInit {
             let rent = Object.assign({}, this.rental);
             rent.customerId = Number(cart.customerId);
             rent.carId = Number(cart.carId);
-            rent.rentDate = cart.rentDate;
-            rent.returnDate = cart.returnDate;
+            rent.rentStartDate = cart.rentStartDate;
+            rent.rentDate = new Date();
+            rent.rentEndDate = cart.rentEndDate;
             this.rentalService.add(rent).subscribe((response) => {
               this.toastrService.success('başarılı');
-            });
+             });
           });
         },
         (responseError) => {

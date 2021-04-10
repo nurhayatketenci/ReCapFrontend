@@ -1,17 +1,21 @@
-<table  class="table table-success table-striped">
-    <thead>
-        <tr>
-            <th>Marka Id</th>
-            <th>Marka Adı</th>
-            <th></th>
-            </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let brand of brands "  style="color: black;">
-        <td> <b>{{brand.brandId}} </b> </td>
-        <td > <b> {{brand.brandName |uppercase}}</b> </td>
-        <td> <button type="button" class="btn btn-danger" routerLink="/brands/update/{{brand.brandId}}">Markayı Güncelle</button></td>    </tr>
-   </tbody>
-  
-</table>
-<button type="button" class="btn btn-danger" routerLink="/brands/add">Marka Ekle</button>
+<div class="container mt-5" style="margin-left: 350px; margin-bottom: 180px;">
+  <div class="col-md-7">
+    <table  class="table table-secondary table-striped text-danger">
+      <thead>
+          <tr>
+              <th>Marka Id</th>
+              <th>Marka Adı</th>
+              <th></th>
+              </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let brand of brands "  style="color: black;">
+          <td> <b>{{brand.brandId}} </b> </td>
+          <td > <b> {{brand.brandName |uppercase}}</b> </td>
+          <td> <button type="button" class="btn btn-danger" routerLink="/brands/update/{{brand.brandId}}">Markayı Güncelle</button></td>    </tr>
+     </tbody>
+    
+  </table>
+  <button type="button" class="btn btn-danger" routerLink="/brands/add">Marka Ekle</button>
+  </div>
+</div>

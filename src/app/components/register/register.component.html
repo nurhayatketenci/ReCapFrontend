@@ -1,7 +1,7 @@
 <body class="text-center">
-    <main class="form-signin" >
+    <main class="form-signin" style="margin-bottom: 10%; background-color:#dddddd; border-radius: 15px;" >
       <form [formGroup]="registerForm">
-        <h1 class="h3 mb-3 fw-normal">Kayıt Ol</h1>
+        <h1 class="h3 mb-3 fw-normal" style="color: #ff4136;">Kayıt Ol</h1>
         <div class="form-floating">
             <input
               formControlName="firstName"
@@ -42,7 +42,7 @@
           />
           <label for="password">Parola</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" (click)="register()">
+        <button class="w-100 btn btn-lg btn-danger" (click)="register()">
         Kayıt ol
         </button>
         

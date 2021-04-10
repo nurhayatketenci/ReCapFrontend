@@ -36,6 +36,7 @@ import { FilterCarPipe } from './pipes/filter-car.pipe';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { RegisteredCardsComponent } from './components/registered-cards/registered-cards.component';
 import { HomeComponent } from './components/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { HomeComponent } from './components/home/home.component';
     UserDetailComponent,
     RegisteredCardsComponent,
     HomeComponent,
+    FooterComponent,
       
     
   
