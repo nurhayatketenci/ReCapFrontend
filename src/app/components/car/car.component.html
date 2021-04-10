@@ -1,39 +1,57 @@
-<div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
-    <div class="spinner-border text-success" role="status">
-        <span class="visually-hidden">Loading...</span>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <app-brand></app-brand>
+      <app-color></app-color>
+    </div>
+  
+    <div class="col-md-9">
+      <div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
+          for="exampleFormControlInput1" class="form-label">Araba Ara</label>
+        <input type="text" [(ngModel)]="filterCarText" class="form-control" id="filterCarText"
+          placeholder="arama ifadesi giriniz">
+      </div>
+      <div>
+        <div *ngIf="filterCarText.length>2" class="alert alert-primary">
+          {{filterCarText}} aradınız.
+        </div>
+        <!-- <app-filter></app-filter> -->
+        <div class="row">
+          <div *ngFor="let car of cars | filterCar:filterCarText" class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><b>{{car.brandName}}</b></h5>
+  
+                <img src="{{apiUrl}}{{car.imagePath}}" class="card-img-top cardin-golgesi" height="120px"/>
+  
+                <ul ul class="list-group list-group-flush mt-3">
+                  <li class="list-group-item">Açıklama: {{car.description}} </li>
+                  <li class="list-group-item"> Model: {{car.modelYear}}</li>
+                  <li class="list-group-item"> Günlük Fiyat: {{car.dailyPrice}}</li>
+                  <li class="list-group-item"> Araba adı: {{car.carName}}</li>
+                  <li class="list-group-item"> Findeks Puanı: {{car.findeksPuan}}</li>
+                </ul>
+              </div>
+  
+              <div class="card-footer">
+                <button class="btn btn-secondary" routerLink="/cars/image/{{car.carId}}">İncele</button>
+  
+                <button class="btn btn-primary float-end" routerLink="/rent/car/{{car.carId}}">
+                  Kirala
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <button class="btn btn-primary btn-xs" routerLink="/cars/detail">Güncelle</button>
+      </div>
     </div>
 </div>
-
- <div class="mb-3">
-    <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" for="exampleFormControlInput1" class="form-label">Araba Ara</label>
-    <input type="text" [(ngModel)]="filterCarText" class="form-control" id="filterCarText" placeholder="arama ifadesi giriniz">
-  </div>
-  <div >
-    <div *ngIf="filterCarText.length>2"  class="alert alert-primary">
-      {{filterCarText}} aradınız.
-   </div>
-   <!-- <app-filter></app-filter> -->
-   <div class="row" >
-    <div *ngFor="let car of cars | filterCar:filterCarText" class="card" style="width: 16rem;">
-      <div class="card-body">
-        <h5 class="card-title"><b>{{car.brandName}}</b></h5>
-      </div>
-      <img src="{{apiUrl}}{{car.imagePath}}"/>
-     <ul class="list-group list-group-flush">
-          <li class="list-group-item">Açıklama: {{car.description}} </li>
-          <li class="list-group-item"> Model: {{car.modelYear}}</li>
-          <li class="list-group-item"> Günlük Fiyat: {{car.dailyPrice}}</li>
-          <li class="list-group-item" > Araba adı: {{car.carName}}</li>
-          <li class="list-group-item" > Findeks Puanı: {{car.findeksPuan}}</li>
-          
-     </ul>
-      <div class="card-body">
-        <section style="float:left">
-          <button type="button" class="btn btn-secondary"  routerLink="/cars/image/{{car.carId}}">İncele</button>
-        </section>
-        <section style="float:right">
-          <button style="margin-left: 10px;" type="button" class="btn btn-primary btn-xs" routerLink="/rent/car/{{car.carId}}">Kirala</button>        </section>
-      </div>
-    </div>
-  </div>
-<button  type="button" class="btn btn-primary btn-xs" routerLink="/cars/detail" >Detayına git</button>

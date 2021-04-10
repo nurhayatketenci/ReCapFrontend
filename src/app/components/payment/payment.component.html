@@ -6,7 +6,7 @@
   <p>Toplam Tutar : <strong>{{ TotalPrice }}</strong> TL</p>
 </div>
 
-<form [formGroup]="cardForm" class="card-header tet-center" >
+<form [formGroup]="cardForm" class="card-header tet-center" id="form" >
   <div class="form-floating mb-3 ">
     <input type="text" id="nameonthecard" class="form-control"
             placeholder="nameOnTheCard" formControlName="nameonthecard">
@@ -49,14 +49,12 @@
     </button>
   </div>
 
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="gridCheck">
-    <label class="form-check-label" for="gridCheck">
-      Kartımı Hatırla
-    </label>
-  </div>
-
 </form>
-   
+<div class="form-check">
+  <input [(ngModel)]="save" class="form-check-input" type="checkbox" id="gridCheck">
+  <label class="form-check-label" for="gridCheck">
+    Kartımı Hatırla
+  </label>
+</div> 
+<app-registered-cards (valueChange)='getCardValue($event)'></app-registered-cards>
 
-   

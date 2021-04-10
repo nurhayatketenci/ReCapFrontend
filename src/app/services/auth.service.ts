@@ -6,7 +6,7 @@ import { RegisterModel } from '../models/registerModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/tokenModel';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { stringify } from '@angular/compiler/src/util';
+import { User } from '../models/user';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,12 +16,13 @@ export class AuthService {
   decodedToken: any;
   constructor(private httpClient: HttpClient) {}
 
-  register(RegisterModel: RegisterModel) {
+  register(registerModel: RegisterModel) {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(
       this.apiUrl + 'register',
-      RegisterModel
+      registerModel
     );
   }
+
   login(loginModel: LoginModel) {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(
       this.apiUrl + 'login',
@@ -31,14 +32,22 @@ export class AuthService {
   handleToken(token: string) {
     let encodedToken = token;
     this.decodedToken = this.jwtHelper.decodeToken(encodedToken);
-    console.log(this.decodedToken);
+   
   }
   getName() {
-   return this.decodedToken[
-     'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
- 
-    ]
+    let token:string=localStorage.getItem("token")
+    if (token) {
+      let decoded = this.jwtHelper.decodeToken(token)
+      let userName = Object.keys(decoded).filter(x => x.endsWith("/name"))[0];
+      return decoded[userName];
+    }
+    return null
+        
   }
+  update(user: User): Observable<SingleResponseModel<TokenModel>> {
+    let updatePath = this.apiUrl + 'update';
+    return this.httpClient.put<SingleResponseModel<TokenModel>>(updatePath, user);
+ }
   isAuthenticated() {
     if (localStorage.getItem('token')) {
       return true;

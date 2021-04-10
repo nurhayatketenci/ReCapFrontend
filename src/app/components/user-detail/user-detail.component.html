@@ -1,0 +1,66 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Kullanıcı güncelle</h5>
+        <div *ngIf="user" class="card-body">
+          <form [formGroup]="userUpdateForm">
+            <div class="mb-3">
+              <label for="firstName"> Ad</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="firstName"
+                  formControlName="firstName"
+                  class="form-control"
+                  placeholder="adınız"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="lastName"> Soyad</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="lastName"
+                  formControlName="lastName"
+                  class="form-control"
+                  placeholder="soyadınız"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email"> Email</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="email"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password"> yeni şifreniz</label>
+              <div class="form-group">
+                <input
+                  type="password"
+                  id="password"
+                  formControlName="password"
+                  class="form-control"
+                  placeholder="password"
+                />
+              </div>
+            </div> 
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-primary" (click)="updateUser()">
+            güncelle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

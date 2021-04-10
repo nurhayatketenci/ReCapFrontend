@@ -33,6 +33,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { FilterCarPipe } from './pipes/filter-car.pipe';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { RegisteredCardsComponent } from './components/registered-cards/registered-cards.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -64,7 +67,10 @@ import { FilterCarPipe } from './pipes/filter-car.pipe';
     LoginComponent,
     RegisterComponent,
     FilterCarPipe,
-  
+    UserDetailComponent,
+    RegisteredCardsComponent,
+    HomeComponent,
+      
     
   
     

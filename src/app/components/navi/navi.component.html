@@ -1,26 +1,39 @@
-<!-- <nav class="navbar navbar-expand-lg" id="navi">
-  <div class="container-fluid" id="pText">
-    <a id="rentalcar" class="navbar-brand" routerLink=""><b>Rental Car</b></a>
+ <nav class="navbar fixed-top navbar-expand-lg navbar-dark sticky-top golge">
+  <div class="container">
+    <a class="navbar-brand" ><b>RENTAL CAR </b></a>
     <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <ul class="navbar-nav gap-2">
+        <li class="nav-item rounded">
+          <a class="nav-link active" aria-current="page" routerLink="/cars"
+            ><i class="bi bi-house-fill me-2"></i>Arabalar</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink=""> Link</a>
+        <li class="nav-item rounded">
+          <a class="nav-link" routerLink="/brands"
+            ><i class="bi bi-people-fill me-2"></i>Markalar</a
+          >
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item rounded">
+          <a class="nav-link"
+            ><i class="bi bi-telephone-fill me-2"></i>Contact</a
+          >
+        </li>
+</ul>
+<ul class="navbar-nav ms-md-auto gap-2">
+
+        <li *ngIf="isAuth()" class="nav-item dropdown rounded">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -28,41 +41,90 @@
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            ><i class="bi bi-person-fill me-2"></i
+            >{{ getName() }}</a
           >
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li><a class="dropdown-item"></a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="user/update"
+                >Bilgilerimi Güncelle</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/login"
+                (click)="cleanLocal()"
+                >Çıkış Yap</a
+              >
+            </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link disabled"
-            href="#"
-            tabindex="-1"
-            aria-disabled="true"
-            >Disabled</a
-          >
+
+        <li *ngIf="!isAuth()" class="nav-item rounded">
+            <button class="btn btn-outline-primary" routerLink="/login">
+              Giriş Yap
+            </button>
+            <button class="btn btn-primary ms-2" routerLink="/register">
+              Kayıt Ol
+            </button>
         </li>
+
       </ul>
-     <button id="kayıt" class="btn btn-primary" routerLink="/register">kayıt ol</button>&nbsp;&nbsp;
-      <button id="giriş" class="btn btn-primary" routerLink="/login">giriş yap</button>&nbsp;&nbsp;  
-      <button id="çıkış"
-        class="btn btn-primary"
-        routerLink="/login"
-        (click)="cleanLocal()"
-      >
-        çıkış yap
-      </button>
     </div>
   </div>
-</nav>  -->
-<nav class="navbar navbar-expand-lg" style="background-color: black">
+</nav> 
+
+<!-- 
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" routerLink="home" target="_blank">
+      <strong>RENTAL CAR</strong>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="carsdetail" >Anasayfa
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target="_blank">About MDB</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  target="_blank">Free download</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target="_blank">Free tutorials</a>
+        </li>
+      </ul>
+    
+ </div>
+
+  </div>
+  
+  <button *ngIf="!isAuth()" id="button" class="btn btn-xs" routerLink="/login">
+    giriş yap</button
+  >
+  <button  *ngIf="!isAuth()"id="button" class="btn btn-xs" routerLink="/register">
+    kayıt ol</button
+  > 
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><b>RENTAL CAR </b></a>
+    <button class="navbar-brand" style="background-color: rgb(6, 32, 32);border-radius: 50px; width: 110px"  ><b>RENTAL CAR </b></button>
+    <button routerLink="/home">Ana sayfa</button>
     <button
       class="navbar-toggler"
       type="button"
@@ -108,10 +170,15 @@
           >
             <li><a class="dropdown-item"></a></li>
             <li>
-              <a class="dropdown-item" routerLink="/cars">Another action</a>
+              <hr class="dropdown-divider" />
             </li>
             <li>
-              <hr class="dropdown-divider" />
+              <a
+                class="dropdown-item"
+                *ngIf="isAuth()"
+                routerLink="user/update"
+                >Bilgilerimi Güncelle</a
+              >
             </li>
             <li>
               <a
@@ -119,18 +186,18 @@
                 *ngIf="isAuth()"
                 routerLink="/login"
                 (click)="cleanLocal()"
-                >Logout</a
+                >Çıkış Yap</a
               >
             </li>
           </ul>
         </li>
-        <button id="button" class="btn btn-xs" routerLink="/login">
+        <button *ngIf="!isAuth()" id="button" class="btn btn-xs" routerLink="/login">
           giriş yap</button
         >&nbsp;&nbsp;
-        <button id="button" class="btn btn-xs" routerLink="/register">
+        <button  *ngIf="!isAuth()"id="button" class="btn btn-xs" routerLink="/register">
           kayıt ol</button
         >&nbsp;&nbsp;
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->

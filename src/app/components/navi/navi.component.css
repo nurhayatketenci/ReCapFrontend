@@ -1,26 +1,11 @@
- #navi{
-    background-color: #252525;
-   
-} 
-#button{
-  background-color: #78c2ad;
-  font-family: sans-serif;
-  color: black;
+.golge {
+  border-bottom: 2px;
+  box-shadow: 0 0 15px 5px rgba(240, 240, 240, .3);
+  background-color: rgba(10, 10, 10, .3);
 }
 
-body {
-    font-family: Montserrat, sans-serif;
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #1c2331 !important;
   }
-  .navbar-brand {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 48px;
-    height: 48px;
-  }
-  
-  .navbar-nav .nav-item:hover {
-    background-color: rgba(180, 190, 203, 0.4);
-  }
-  
-
+}

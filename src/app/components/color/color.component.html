@@ -1,6 +1,5 @@
 <div class="mb-3">
-    <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" for="exampleFormControlInput1" class="form-label">Renk Ara</label>
-    <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText" placeholder="arama ifadesi giriniz">
+    <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText" placeholder="Renk arama ifadesi giriniz">
   </div>
   <div>
     <div *ngIf="filterColorText.length>2" class="alert alert-primary">
@@ -14,5 +13,7 @@
     [class]="getCurrentColorClass(color)">
     {{color.colorName}}</li>
 </ul>
-<button  type="button" class="btn btn-primary btn-xs" routerLink="colors/detail" >Detayına git</button>
+<div class="d-grid">
+  <button class="btn btn-primary mt-2" routerLink="/colors/detail">Detayına git</button>
+</div>
 

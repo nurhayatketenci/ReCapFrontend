@@ -1,0 +1,28 @@
+<table class="table table-active">
+  <thead>
+    <tr>
+      <th>Kart Sahibi</th>
+      <th>Kart Numarası</th>
+      <th>Kart Ayı</th>
+      <th>Kart Yılı</th>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let card of cards" class="table">
+      <td>
+        <b>{{ card?.nameOnTheCard }}</b>
+      </td>
+      <td>
+        <b>{{ card?.cardNumber }}</b>
+      </td>
+      <td>
+        <b>{{ card?.expirationMonth }}</b>
+      </td>
+      <td>
+        <b>{{ card?.expirationYear }}</b>
+      </td>
+      <td><button type="button" class="btn btn-primary" (click)="getCard(card.id)">Kullan</button></td>
+    </tr>
+  </tbody>
+</table>

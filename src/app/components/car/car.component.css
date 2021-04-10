@@ -1,8 +1,8 @@
 .card{
-    margin-left: 20px;
-    margin-bottom: 10px;
-    box-shadow: 0px 0px 8px 5px silver;
-    margin-top: 20px;
+    box-shadow: 0px 0px 15px 5px rgba(240, 240, 240, .3);
 }
 
-
+.cardin-golgesi{
+    border: 1px solid rgba(10, 10, 10, .5);
+    box-shadow: 0px 0px 15px 5px rgba(10, 10, 10, .5);
+}

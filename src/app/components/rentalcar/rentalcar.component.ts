@@ -29,6 +29,7 @@ export class RentalcarComponent implements OnInit {
   customerId: number;
   findexPuan: number;
   customer: Customer;
+ 
   constructor(
     private activedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -49,7 +50,8 @@ export class RentalcarComponent implements OnInit {
     this.activedRoute.params.subscribe((params) => {
       if (params['carId']) {
         this.carId = params.carId;
-        this.getCarDetail(params.carId);
+        this.getCarDetail(params["carId"]);
+
       }
     });
   }
@@ -76,6 +78,7 @@ export class RentalcarComponent implements OnInit {
     if (this.rentalAddForm.invalid) {
       return this.toastrService.error('Formunuz eksik', 'Hata');
     }
+    
    let rentalModel = Object.assign({}, this.rentalAddForm.value);
     rentalModel.carId = this.currentCar.carId;
     rentalModel.customerId = Number(this.customerId);
@@ -86,26 +89,13 @@ export class RentalcarComponent implements OnInit {
     rentalModel.dailyPrice = this.currentCar.dailyPrice;
     rentalModel.totalPrice = this.totalPrice;
     this.getCustomerById(rentalModel.customerId);
-   
-    if (this.customer.findexPuan === 0) {
-      return this.toastrService.error('findeks puanınız bulunamadı.');
-    
-    }
+
     if (this.customer.findexPuan < this.currentCar.findeksPuan) {
       return this.toastrService.error('findeks puanınız yetersizdir.');
     }
     this.cartService.addToCart(rentalModel);
     this.toastrService.success('Sepete eklendi', 'Sepet');
     return this.router.navigate(['/cart']);
-    // this.rentalService
-    //   .checkRentalAvailable(rentalModel)
-    //   .subscribe((response) => {
-    //     if (response.success) {
-
-    //     } else {
-    //       this.toastrService.info('bu araba kirada.');
-    //     }
-    //   });
    
   }
   getCustomerById(customerId: number) {
