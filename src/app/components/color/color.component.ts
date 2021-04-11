@@ -10,6 +10,10 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class ColorComponent implements OnInit {
   
+ 
+
+  color = 'black';
+  key='letter';
   colors:Color[]=[];
   currentColor:Color;
   dataLoaded =false;

@@ -25,7 +25,6 @@ export class RegisteredCardsComponent implements OnInit {
   getCard(id: number) {
     this.paymentService.getCardById(id).subscribe((response) => {
       this.valueChange.emit(response.data);
-      console.log(response.data);
     });
   }
 }

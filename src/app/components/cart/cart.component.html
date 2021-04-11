@@ -1,42 +1,43 @@
-<div  style="margin-bottom: 500px; margin-left: 400px;">
+<div class="text-center " style="margin-top: 120px; margin-bottom: 370px;">
   <div class="container">
-    <div class="row"> 
-      <div class="col-md-7">
+    <div class="row">
+      <div class="col-md-12 ">
         <table id="customers">
           <tr>
-             <th>Marka</th>
-              <th>Model</th>
-              <th>Renk</th>
-              <th>Günlük Fiyat</th>
-              <th>Kira Tarihi</th>
-              <th>Teslim Tarihi</th>
-              <th>Toplam</th>
-            <th>Aracı sil</th>      
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Renk</th>
+            <th>Günlük Fiyat</th>
+            <th>Kira Tarihi</th>
+            <th>Teslim Tarihi</th>
+            <th>Toplam</th>
+            <th>Sil</th>
           </tr>
           <tr *ngFor="let cart of cartItems">
             <td>{{ cart.brandName }}</td>
             <td>{{ cart.modelYear }}</td>
-              <td>{{ cart.colorName }}</td>
-              <td class="text-right">{{ cart.dailyPrice }} TL</td>
-              <td>{{ cart.rentDate | date: "dd.MM.YYYY" }}</td>
-              <td>{{ cart.returnDate | date: "dd.MM.YYYY" }}</td>
-              <td class="text-right">{{ cart.totalPrice }} TL</td>
-              <td>
-                <button class="btn btn-danger" (click)="removeFromCart(cart)" >Sil</button>
-              </td>
+            <td>{{ cart.colorName }}</td>
+            <td class="text-right">{{ cart.dailyPrice }} TL</td>
+            <td>{{ cart.rentStartDate | date: "dd.MM.YYYY" }}</td>
+            <td>{{ cart.rentEndDate | date: "dd.MM.YYYY" }}</td>
+            <td class="text-right">{{ cart.totalPrice }} TL</td>
+            <td>
+              <button class="btn btn-fill btn-danger" (click)="removeFromCart(cart)">Sil</button>
+            </td>
           </tr>
         </table>
       </div>
-    
+      <div class="col-md-6">
+        <div class="row">
+          <button class="btn btn-fill btn-danger mt-3 ml-3" routerLink="/cars">Kiralamaya Devam Et</button>
+          <button class="btn btn-fill btn-danger mt-3 ml-3" routerLink="/creditCard/{{ cUsersId }}">Ödemeye Git</button>
+        </div>
+      </div>
     </div>
-    
     <div class="row">
       <div class="col-md-3">
-        <button class="btn btn-fill btn-danger" routerLink="/creditCard/{{ cUsersId }}">Ödeme</button>
+
       </div>
     </div>
   </div>
 </div>
-
-
-

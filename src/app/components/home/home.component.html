@@ -1,63 +1,123 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div
+  id="carouselExampleIndicators"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
   </div>
   <div class="carousel-inner" id="slider">
     <div class="carousel-item">
-      <img src="assets/images/slide2.jpg" class="d-block w-100" alt="...">
-      <div style="margin-bottom: 200px; " class="carousel-caption d-none d-block">
-        <h1><b>2 AYDAN 12 AYA KADAR<br> ARAÇ KİRALAMA HİZMETİ</b></h1>
+      <img src="assets/images/slide2.jpg" class="d-block w-100" alt="..." />
+      <div style="margin-bottom: 200px" class="carousel-caption d-none d-block">
+        <h1>
+          <b
+            >
+            EN UYGUN FİYAT GARANTİSİ</b
+          >
+        </h1>
         <button class="btn btn-danger" routerLink="/cars">HEMEN KİRALA</button>
       </div>
     </div>
     <div class="carousel-item active">
-      <img src="assets/images/slide3.jpg" class="d-block w-100" alt="..." >
-      <div style="margin-bottom: 200px; " class="carousel-caption d-none d-block">
-        <h1><b>2 AYDAN 12 AYA KADAR<br> ARAÇ KİRALAMA HİZMETİ</b></h1>
+      <img src="assets/images/slide3.jpg" class="d-block w-100" alt="..." />
+      <div style="margin-bottom: 200px" class="carousel-caption d-none d-block">
+        <h1>
+       <b>2 AYDAN 12 AYA KADAR<br />
+        ARAÇ KİRALAMA HİZMETİ</b>
+        </h1>
         <button class="btn btn-danger" routerLink="/cars">HEMEN KİRALA</button>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="assets/images/slider-2.jpg" class="d-block w-100" alt="...">
-      <div style="margin-bottom: 200px; " class="carousel-caption d-none d-block">
-        <h1><b>2 AYDAN 12 AYA KADAR<br> ARAÇ KİRALAMA HİZMETİ</b></h1>
+      <img src="assets/images/slider-2.jpg" class="d-block w-100" alt="..." />
+      <div style="margin-bottom: 200px" class="carousel-caption d-none d-block">
+        <h1>
+          <b
+            >2 AYDAN 12 AYA KADAR<br />
+            ARAÇ KİRALAMA HİZMETİ</b
+          >
+        </h1>
         <button class="btn btn-danger" routerLink="/cars">HEMEN KİRALA</button>
       </div>
     </div>
-  
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleIndicators"
+    data-bs-slide="prev"
+  >
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleIndicators"
+    data-bs-slide="next"
+  >
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div> 
-<div class="border border-dark" style="background-color: white;"> 
-         <div id="cards_landscape_wrap-2">
-          <div class="container">
-            <h1><b>GALERİ</b></h1>
-              <div class="row" >
-                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3" *ngFor="let carImage of carImages ">
-                      <a href="">
-                          <div class="card-flyer" >
-                              <div class="text-box">
-                                  <div class="image-box">
-                                      <img src="{{apiUrl}}{{carImage.imagePath}}" alt="" />
-                                  </div>
-                              </div>
-                          </div>
-                      </a>
-                  </div>
+</div>
+<div class="border border-dark" style="background-color: white">
+  <div id="cards_landscape_wrap-2">
+    <div class="container">
+      <h1><b>GALERİ</b></h1>
+      <hr />
+      <div class="row">
+        <div
+          class="col-xs-4 col-sm-4 col-md-4 col-lg-3"
+          *ngFor="let carImage of carImages"
+        >
+          <a href="">
+            <div class="card-flyer">
+              <div class="text-box">
+                <div class="image-box">
+                  <img src="{{ apiUrl }}{{ carImage.imagePath }}" alt="" />
+                </div>
               </div>
-          </div>
-          <button style="font-size: 20px;" class="btn btn-danger  mb-5" routerLink="/cars">HEMEN KİRALA</button>
-         </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <button
+      style="font-size: 20px"
+      class="btn btn-danger mb-5"
+      routerLink="/cars"
+    >
+      HEMEN KİRALA
+    </button>
+  </div>
 </div>
 <div style="background-color: white">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d770809.0860158126!2d28.45174621544522!3d41.003964328513874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1618059628013!5m2!1str!2str" width="100%" height="400" style="border:0; " allowfullscreen="" loading="lazy"></iframe>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d770809.0860158126!2d28.45174621544522!3d41.003964328513874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1618059628013!5m2!1str!2str"
+    width="100%"
+    height="400"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+  ></iframe>
 </div>

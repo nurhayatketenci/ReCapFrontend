@@ -1,15 +1,15 @@
-<div class="container mt-5 mb-5" style=" background-color:#dddddd; border-radius: 15px;">
-  <div class="row" >
-    <div class="col-md-12">
-      <div class="card-header text-center text-danger">
-        <strong>Ödeme İşlemi</strong>
+<div class="container  mb-5" style=" background-color:#dddddd; margin-top: 120px;">
+  <div class="row " >
+    <div class="col-md-6 mt-3">
+      <div class="card-header text-center text-danger fw-bold text-uppercase">
+        <strong >Ödeme İşlemi</strong>
       </div>
       
       <div class="mb-3 text-danger">
-        <p>Toplam Tutar : <strong>{{ TotalPrice }}</strong> TL</p>
+        <p><b>Toplam Tutar :{{ TotalPrice }} TL</b></p>
       </div>
       
-      <form [formGroup]="cardForm" class="card-header tet-center" id="form" >
+      <form [formGroup]="cardForm" [appColor]="color"class="card-header tet-center" id="form" >
         <div class="form-floating mb-3 ">
           <input type="text" id="nameonthecard" class="form-control"
                   placeholder="nameOnTheCard" formControlName="nameonthecard">
@@ -51,16 +51,17 @@
             Ödeme Yap
           </button>
         </div>
-      
+
       </form>
       <div class="form-check">
         <input [(ngModel)]="save" class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Kartımı Hatırla
+        <label class="form-check-label text-danger mb-3" for="gridCheck">
+          <b>Kartımı Hatırla</b>
         </label>
       </div> 
+    </div>
+    <div class="col-md-6 mt-5">
       <app-registered-cards (valueChange)='getCardValue($event)'></app-registered-cards>
-      
     </div>
   </div>
 </div>

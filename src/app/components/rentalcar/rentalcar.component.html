@@ -1,51 +1,35 @@
-<div class="container mt-5 mb-5" style="margin-left: 400px;" >
+<div class="container mb-5" style="margin-left: 400px; margin-top: 100px;">
   <div class="row">
     <div class="col-md-7">
-      <div class="card " >
-        <div class="card-header"><h5 class="title">Araç kirala</h5></div>
-         <div class="card-body">
+      <div class="card ">
+        <div class="card-header">
+          <h5 class="title">Araç kirala</h5>
+        </div>
+        <div class="card-body">
           <div class="mb-3">
             <label for="productName">Müşteri </label>
             <div class="form-group">
               <select id="cUsersId" class="form-select" [(ngModel)]="customerId">
-                <option
-                  [value]="customer.cUsersId"
-                  *ngFor="let customer of customers"
-                >
-                  {{ customer.cUsersId }} {{ customer.companyName }} {{customer.findexPuan}}
+                <option value=0>-- Müşteri Seçiniz --</option>
+                <option [value]="customer.cUsersId" *ngFor="let customer of customers">
+                  {{ customer.cUsersId }} {{ customer.companyName }}, Findex Puan: {{customer.findexPuan}}
                 </option>
-                
               </select>
             </div>
-           
           </div>
-      
           <form [formGroup]="rentalAddForm">
             <div class="mb-3">
               <label for="productName">Kiralama tarihi</label>
               <div class="form-group">
-                <input
-                  type="date"
-                  id="rentStartDate"
-                  class="form-control"
-                  (change)="calcTotalPrice()"
-                  formControlName="rentStartDate"
-                  min="{{ rentDate | date: 'yyyy-MM-dd' }}"
-                />
+                <input type="date" id="rentStartDate" class="form-control" (change)="calcTotalPrice()"
+                  formControlName="rentStartDate" min="{{ rentDate | date: 'yyyy-MM-dd' }}" />
               </div>
             </div>
-      
             <div class="mb-3">
               <label for="productName">Teslim tarihi</label>
               <div class="form-group">
-                <input
-                  type="date"
-                  id="rentEndDate"
-                  class="form-control"
-                  (change)="calcTotalPrice()"
-                  formControlName="rentEndDate"
-                  min="{{ returnDate | date: 'yyyy-MM-dd' }}"
-                />
+                <input type="date" id="rentEndDate" class="form-control" (change)="calcTotalPrice()"
+                  formControlName="rentEndDate" min="{{ returnDate | date: 'yyyy-MM-dd' }}" />
               </div>
             </div>
           </form>
@@ -64,4 +48,4 @@
       </div>
     </div>
   </div>
- </div>
+</div>

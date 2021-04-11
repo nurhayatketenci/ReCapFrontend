@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText" placeholder="Renk arama ifadesi giriniz">
+    <input [appColor]="color" [appKey]="'letter'"  type="text" [(ngModel)]="filterColorText" class="form-control mt-3" id="filterColorText" placeholder="Renk arama ifadesi giriniz">
   </div>
   <div>
     <div *ngIf="filterColorText.length>2" class="alert alert-primary">

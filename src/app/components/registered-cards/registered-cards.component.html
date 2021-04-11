@@ -1,15 +1,15 @@
-<table class="table table-active text-danger">
+<table  class="table table-secondary text-danger">
   <thead>
     <tr>
       <th>Kart Sahibi</th>
       <th>Kart Numarası</th>
       <th>Kart Ayı</th>
       <th>Kart Yılı</th>
-      <td></td>
+      <th>Kayıtlı Kartı Kullan</th>
     </tr>
   </thead>
   <tbody>
-    <tr  *ngFor="let card of cards" class="table">
+    <tr  *ngFor="let card of cards" class="table ">
       <td>
         <b>{{ card?.nameOnTheCard }}</b>
       </td>
@@ -22,7 +22,7 @@
       <td>
         <b>{{ card?.expirationYear }}</b>
       </td>
-      <td><button type="button" class="btn btn-danger" (click)="getCard(card.id)">Kullan</button></td>
+      <td><button type="button" class="btn btn-danger ml-2" (click)="getCard(card.id)">Kullan</button></td>
     </tr>
   </tbody>
 </table>

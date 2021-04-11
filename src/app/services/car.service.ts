@@ -13,9 +13,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root'
 })
 export class CarService {
-  getCarDetails(carId: number) {
-    throw new Error('Method not implemented.');
-  }
+
   apiUrl="https://localhost:44339/api/"
   constructor(private httpClient:HttpClient) { }
   getCars():Observable<ListResponseModel<CarDetailDto>>{
@@ -55,6 +53,10 @@ export class CarService {
       }
       getCarUpdateById(carId:number):Observable<SingleResponseModel<Car>> {
         return this.httpClient.get<SingleResponseModel<Car>>(this.apiUrl+"cars/getbyid?id="+carId);
+      }
+      getCarDetails(carId:number):Observable<ListResponseModel<CarDetailDto>> {
+        let newPath = this.apiUrl + "cars/CarDetailDto?carId="+carId;
+        return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
       }
     
 }

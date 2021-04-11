@@ -13,6 +13,7 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
+  color = 'black';
   cars: CarDetailDto[] = [];
   brands: Brand[] = [];
   colors: Color[] = [];
@@ -69,22 +70,6 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
-
-  // isCarAvailable(carId: number) {
-  //   console.log(carId)
-  //   this.rentalService.isCarAvailable(carId).subscribe(
-  //     (response) => {
-  //       console.log(response)
-  //       this.isCarAvail = response;
-  //       this.toastrService.success('olumlu sonuç, yönlendirme yapılacak', 'Uyarı');
-  //       this.route.navigate(["rent/car/"+carId]);
-  //     },
-  //     (responseError) => {
-  //       console.log(responseError)
-  //       this.toastrService.error('Bu araç kiralanamaz', 'Uyarı');
-  //     }
-  //   );
-  // }
 
   setFilter() {
     this.activatedRoute.params.subscribe((param) => {

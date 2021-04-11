@@ -1,7 +1,5 @@
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
 import {
-  CheckboxControlValueAccessor,
   FormBuilder,
   FormGroup,
   Validators,
@@ -22,6 +20,7 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./payment.component.css'],
 })
 export class CreditCardComponent implements OnInit {
+  color = 'black';
   TotalPrice: number;
   cUsersId: number;
   cardForm: FormGroup;
@@ -95,6 +94,7 @@ export class CreditCardComponent implements OnInit {
             rent.rentStartDate = cart.rentStartDate;
             rent.rentDate = new Date();
             rent.rentEndDate = cart.rentEndDate;
+            this.cartService.removeFromCart(cart)
             this.rentalService.add(rent).subscribe((response) => {
               this.toastrService.success('başarılı');
              });

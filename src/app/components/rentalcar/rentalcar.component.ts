@@ -1,10 +1,9 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
-import { Customer } from 'src/app/models/customer';
+import { Customer, CustomerDetail } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
 import { CarService } from 'src/app/services/car.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -22,10 +21,11 @@ export class RentalcarComponent implements OnInit {
   rentalAddForm: FormGroup;
   customers: Customer[] = [];
   currentCar: CarDetailDto;
+  customerDetail:CustomerDetail[]=[];
   rentDate: Date;
   returnDate: Date;
   totalPrice: number;
-  customerId: number;
+  customerId: number = 0;
   findexPuan: number;
   customer: Customer;
  
@@ -50,7 +50,6 @@ export class RentalcarComponent implements OnInit {
       if (params['carId']) {
         this.carId = params.carId;
         this.getCarDetail(params["carId"]);
-
       }
     });
   }
@@ -67,12 +66,14 @@ export class RentalcarComponent implements OnInit {
       rentEndDate: [''],
     });
   }
+
   getCustomerDetails() {
     this.customerService.getCustomer().subscribe((response) => {
       this.customers = response.data;
-      console.log(response.data);
+      this.customer = this.customers.find(customer => customer.cUsersId == this.customerId)
     });
   }
+
   async addToCart() {
     if (this.rentalAddForm.invalid) {
       this.toastrService.error('Formunuz eksik', 'Hata');
@@ -87,7 +88,6 @@ export class RentalcarComponent implements OnInit {
     rentalModel.modelYear = this.currentCar.modelYear;
     rentalModel.dailyPrice = this.currentCar.dailyPrice;
     rentalModel.totalPrice = this.totalPrice;
-    console.log(rentalModel)
     console.log(await this.isRentable(rentalModel))
     if(!await this.isRentable(rentalModel)){
       this.toastrService.error("Bu araba belirlenen tarihler arasında zaten kiralanmış.")
@@ -97,6 +97,7 @@ export class RentalcarComponent implements OnInit {
     this.getCustomerById(rentalModel.customerId);
     if (this.customer.findexPuan < this.currentCar.findeksPuan) {
       this.toastrService.error('findeks puanınız yetersizdir.');
+      this.router.navigate(['/cars']);
       return
     }
     this.cartService.addToCart(rentalModel);
@@ -115,8 +116,8 @@ export class RentalcarComponent implements OnInit {
   }
 
   calcTotalPrice() {
-    let startDate = new Date(this.rentalAddForm.value.rentDate);
-    let endDate = new Date(this.rentalAddForm.value.returnDate);
+    let startDate = new Date(this.rentalAddForm.value.rentStartDate);
+    let endDate = new Date(this.rentalAddForm.value.rentEndDate);
     if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
       this.totalPrice = 0;
     } else if (startDate > endDate) {

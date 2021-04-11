@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="title">Kullanıcı güncelle</h5>
+<div class="container pt-5 mt-5"style="margin-left: 300px;" >
+  <div class="col-md-8 mt-2">
+    <div class="card" >
+      <div class="card-header" >
+        <h5 class="display-6 text-center fw-bold text-uppercase">Kullanıcı güncelle</h5>
         <div *ngIf="user" class="card-body">
-          <form [formGroup]="userUpdateForm" class="col-lg-4 mx-auto fw-bold">
+          <form [formGroup]="userUpdateForm" class="col-lg-12 mx-auto fw-bold">
             <div class="mb-3">
               <label for="firstName">Ad</label>
                 <input
@@ -48,7 +48,7 @@
           </form>
         </div>
         <div class="card-footer text-center">
-          <button class="btn btn-fill btn-primary" (click)="updateUser()">
+          <button class="btn btn-danger px-4 py-2" (click)="updateUser()">
             güncelle
           </button>
         </div>
