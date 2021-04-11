@@ -20,19 +20,19 @@ export class PaymentService {
     return this.httpClient.post<ResponseModel>(newPath, payment);
   }
   cardVerification(card: CreditCard): Observable<ResponseModel> {
-    let newPath = this.apiUrl + 'creditcart/check';
+    let newPath = this.apiUrl + 'creditcards/check';
     return this.httpClient.post<ResponseModel>(newPath, card);
   }
   registercreditcard(card: CreditCard): Observable<ResponseModel> {
-    let newPath = this.apiUrl + 'creditcart/registercreditcard';
+    let newPath = this.apiUrl + 'creditcards/registercreditcard';
     return this.httpClient.post<ResponseModel>(newPath, card);
   }
   getCardById(cardId:number):Observable<SingleResponseModel<CreditCard>> {
-    let newPath=this.apiUrl+'creditcart/getbyid?id='+cardId
+    let newPath=this.apiUrl+'creditcards/getbyid?id='+cardId
     return this.httpClient.get<SingleResponseModel<CreditCard>>(newPath)
   }
   getCards(): Observable<ListResponseModel<CreditCard>> {
-    let newPath = this.apiUrl + 'creditcart/getall';
+    let newPath = this.apiUrl + 'creditcards/getall';
     return this.httpClient.get<ListResponseModel<CreditCard>>(newPath);
   }
 }

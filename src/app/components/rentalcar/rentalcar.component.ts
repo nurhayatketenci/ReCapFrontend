@@ -101,7 +101,7 @@ export class RentalcarComponent implements OnInit {
       return
     }
     this.cartService.addToCart(rentalModel);
-    this.toastrService.success('Sepete eklendi', 'Sepet');
+    this.toastrService.success('Sepete eklendi');
     this.router.navigate(['/cart']);
    
   }

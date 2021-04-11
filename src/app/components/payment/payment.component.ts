@@ -85,7 +85,6 @@ export class CreditCardComponent implements OnInit {
       payment.TotalPrice = this.TotalPrice;
       this.paymentService.addPayment(payment).subscribe(
         (response) => {
-          this.toastrService.success(response.message, 'Ödeme');
           this.cartList = this.cartService.cartList();
           this.cartList.forEach((cart) => {
             let rent = Object.assign({}, this.rental);
@@ -96,8 +95,8 @@ export class CreditCardComponent implements OnInit {
             rent.rentEndDate = cart.rentEndDate;
             this.cartService.removeFromCart(cart)
             this.rentalService.add(rent).subscribe((response) => {
-              this.toastrService.success('başarılı');
-             });
+              this.toastrService.success(response.message, 'Ödeme');
+            });
           });
         },
         (responseError) => {
