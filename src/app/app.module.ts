@@ -39,6 +39,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ColorDirective } from './directives/color.directive';
 import { WritingAreaDirective } from './directives/writing-area.directive';
+import { CarimageComponent } from './components/carimage/carimage.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { WritingAreaDirective } from './directives/writing-area.directive';
     FooterComponent,
     ColorDirective,
     WritingAreaDirective,
+    CarimageComponent,
 
 
 

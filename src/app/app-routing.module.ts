@@ -20,6 +20,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { CarimageComponent } from './components/carimage/carimage.component';
 
 
 
@@ -66,6 +67,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
   { path: 'rental', component: RentalComponent },
+
+  { path: 'carimageadd', component: CarimageComponent },
+
 
 
 
