@@ -27,7 +27,7 @@
               <div class="card-body">
                 <h5 class="card-title"><b>{{car.brandName}}</b></h5>
   
-                <img src="{{apiUrl}}{{car.imagePath}}" class="card-img-top cardin-golgesi" height="120px"/>
+                <img  [src]="car.images.length !== 0 ? apiUrl+ car.images[0]: apiUrl + defaultImg" class="card-img-top cardin-golgesi" height="120px"/>
   
                 <ul ul class="list-group list-group-flush mt-3">
                   <li class="list-group-item">Açıklama: {{car.description}} </li>

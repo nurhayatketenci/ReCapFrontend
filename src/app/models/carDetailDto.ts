@@ -8,6 +8,6 @@ export interface CarDetailDto{
     brandId:number
     colorId:number
     carName:string
-    imagePath:string
+    images: string[]
     findeksPuan:number
 }

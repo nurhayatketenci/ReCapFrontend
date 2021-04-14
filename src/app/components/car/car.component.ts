@@ -22,6 +22,7 @@ export class CarComponent implements OnInit {
   brandFilter: number = 0;
   colorFilter: number = 0;
   isCarAvail: boolean;
+  defaultImg="default.png"
   apiUrl: string = 'https://localhost:44339/Images/';
 
   constructor(
