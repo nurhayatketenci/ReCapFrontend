@@ -1,51 +1,30 @@
-<body class="text-center mt-5 mb-5">
-    <main class="form-signin" style="background-color:#dddddd; border-radius: 15px;" >
-      <form [formGroup]="registerForm">
-        <h1 class="h3 mb-3 fw-normal" style="color: #ff4136;">Kayıt Ol</h1>
-        <div class="form-floating">
-            <input
-              formControlName="firstName"
-              type="text"
-              class="form-control"
-              id="firstName"
-              placeholder="Adınızı giriniz"
-            />
-            <label for="firstName">Adınız</label>
-          </div>
-          <div class="form-floating">
-            <input
-              formControlName="lastName"
-              type="text"
-              class="form-control"
-              id="lastName"
-              placeholder="Soyadınızı giriniz"
-            />
-            <label for="lastName">Soyadınız</label>
-          </div>
-        <div class="form-floating">
-          <input
-            formControlName="email"
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="name@example.com"
-          />
-          <label for="email">E-posta</label>
-        </div>
-        <div class="form-floating">
-          <input
-          formControlName="password"
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-          />
-          <label for="password">Parola</label>
-        </div>
-        <button class="w-100 btn btn-lg btn-danger" (click)="register()">
-        Kayıt ol
-        </button>
-        
-      </form>
-    </main>
-  </body>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<div class="login mt-5">
+  <h2 class="text-white"> Kayıt ol </h2>
+  <form  [formGroup]="registerForm">
+    <label for="floatingInput" class="text-white"><b>Ad</b></label>
+    <input class="text" name="firstName" formControlName="firstName"
+    type="text"
+    id="floatingInput"
+    placeholder="firstName">
+    <label for="floatingInput" class="text-white"><b>Ad</b></label>
+    <input class="text" name="lastName" formControlName="lastName"
+    type="text"
+    id="floatingInput"
+    placeholder="lastName">
+    <label for="floatingInput" class="text-white"><b>E-posta</b></label>
+    <input class="text" name="username" formControlName="email"
+    type="email"
+    id="floatingInput"
+    placeholder="name@example.com">
+    <label for="floatingInput" class="text-white"><b>Parola</b></label>
+    <input class="text" name="password" formControlName="password"
+    type="password"
+    id="floatingInput"
+    placeholder="Password">
+    <button class="signup"   (click)="register()">
+      Kayıt ol
+    </button>
+    <hr>
+  </form>
+</div>

@@ -1,32 +1,21 @@
-<body class class="text-center mt-5"  >
-    <main class="form-signin " style="margin-bottom: 3%; background-color:#dddddd; border-radius: 15px;">
-      <form [formGroup]="loginForm" style="height: 300px;">
-        <h1 class="h3 mb-3 fw-normal text-danger" ><b>Giriş yap</b></h1>
-  
-        <div class="form-floating">
-          <input
-            formControlName="email"
-            type="email"
-            class="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-          />
-          <label for="floatingInput">E-posta</label>
-        </div>
-        <div class="form-floating">
-          <input
-          formControlName="password"
-            type="password"
-            class="form-control"
-            id="floatingPassword"
-            placeholder="Password"
-          />
-          <label for="floatingPassword">Parola</label>
-        </div>
-        <button class="w-100 btn btn-lg btn-danger" routerLink="/cars" (click)="login()">
-          Giriş yap
-        </button>
-        <a routerLink="/register"class="text-danger"> Hesabınız yok mu kayıt olun.</a>
-      </form>
-    </main>
-  </body>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<div class="login mt-5 mb-5">
+  <h2 class="text-white"> Giriş Yap </h2>
+  <form  [formGroup]="loginForm">
+    <label for="floatingInput" class="text-white"><b>E-posta</b></label>
+   <input class="text" name="username" formControlName="email"
+   type="email"
+   id="floatingInput"
+   placeholder="name@example.com">
+   <label for="floatingInput" class="text-white"><b>Parola</b></label>
+    <input class="text" name="password" formControlName="password"
+    type="password"
+    id="floatingInput"
+    placeholder="Password">
+    <a routerLink="/register"class="text-white ml-5"> Hesabınız yok mu kayıt olun.</a>
+    <button class="signin"  routerLink="/cars" (click)="login()">
+      Giriş Yap
+    </button>
+    <hr>
+  </form>
+</div>
