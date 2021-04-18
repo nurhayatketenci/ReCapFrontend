@@ -22,7 +22,6 @@ body {
   z-index: 2;
   margin-bottom: 50px;
 }
-
 .form-signup input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
