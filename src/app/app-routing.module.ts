@@ -66,9 +66,9 @@ const routes: Routes = [
 
   { path: 'home', component: HomeComponent },
 
-  { path: 'rental', component: RentalComponent },
+  { path: 'rental', component: RentalComponent, canActivate: [LoginGuard] },
 
-  { path: 'carimageadd', component: CarimageComponent },
+  { path: 'carimageadd', component: CarimageComponent , canActivate: [LoginGuard]},
 
 
 
